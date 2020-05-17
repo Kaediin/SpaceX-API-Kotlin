@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <ProgressBar
+        android:id="@+id/progress_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+
+    <RelativeLayout
+        android:id="@+id/rel_layout_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/missionName"
+            android:layout_width="fill_parent"
+            android:layout_toStartOf="@+id/mission_patch"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/launchSite"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/missionName"
+            android:layout_marginBottom="10dp"
+            android:layout_toStartOf="@+id/mission_patch"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/mission_patch"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_alignParentEnd="true"
+            android:adjustViewBounds="true" />
+
+        <TextView
+            android:id="@+id/success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mission_patch"
+            android:layout_marginBottom="10dp"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/details_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/success"
+            android:text="Details:"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/details_title"
+            android:background="@color/black" />
+
+        <TextView
+            android:id="@+id/details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_layout_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_layout_detail"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+
+        <ImageButton
+            android:id="@+id/youtube_details"
+            android:layout_width="@dimen/button_height"
+            android:layout_height="@dimen/button_width"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:backgroundTint="@color/black"
+            android:scaleType="fitCenter"
+            android:src="@drawable/youtube" />
+
+        <ImageButton
+            android:id="@+id/reddit_details"
+            android:layout_width="@dimen/button_height"
+            android:layout_height="@dimen/button_width"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:backgroundTint="@color/black"
+            android:scaleType="fitCenter"
+            android:src="@drawable/reddit" />
+
+        <ImageButton
+            android:id="@+id/news_details"
+            android:layout_width="@dimen/button_height"
+            android:layout_height="@dimen/button_width"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:backgroundTint="@color/black"
+            android:scaleType="fitCenter"
+            android:src="@drawable/news" />
+
+        <ImageButton
+            android:id="@+id/wiki_details"
+            android:layout_width="@dimen/button_height"
+            android:layout_height="@dimen/button_width"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:adjustViewBounds="true"
+            android:backgroundTint="@color/black"
+            android:scaleType="fitCenter"
+            android:src="@drawable/wikipedia" />
+
+        <ImageButton
+            android:id="@+id/presskit_details"
+            android:layout_width="@dimen/button_height"
+            android:layout_height="@dimen/button_width"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:padding="12dp"
+            android:backgroundTint="@color/black"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pdf" />
+    </LinearLayout>
+
+</RelativeLayout>

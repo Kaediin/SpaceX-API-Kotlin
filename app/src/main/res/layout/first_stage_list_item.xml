@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/first_stage_list_item"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/core_header"
+        android:text="@string/placeholder"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:id="@+id/divider_fairing"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/core_header"
+        android:background="@color/black" />
+
+    <TextView
+        android:id="@+id/core_serial_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divider_fairing"
+        android:text="Core serial: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/core_serial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider_fairing"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/flight_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/core_serial_title"
+        android:text="Flight: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/flight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/core_serial_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/block_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/flight_title"
+        android:text="Block: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/block"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/flight_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/gridfins_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/block_title"
+        android:text="Gridfins: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/gridfins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/block_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/legs_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gridfins_title"
+        android:text="Legs: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/legs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gridfins_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/reused_core_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legs_title"
+        android:text="Resued: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/reused_core"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legs_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/land_success_core_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reused_core_title"
+        android:text="Land success: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/land_success_core"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reused_core_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/landing_intent_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/land_success_core_title"
+        android:text="Landing intent: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/landing_intent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/land_success_core_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/landing_type_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/landing_intent_title"
+        android:text="Landing type: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/landing_type_intent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/landing_intent_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/landing_vehicle_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/landing_type_title"
+        android:text="Landing vehicle: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/landing_vehicle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/landing_type_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+</RelativeLayout>

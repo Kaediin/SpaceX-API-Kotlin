@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SpaceX Launches</string>
+
+    <string name="upcoming">UPCOMING</string>
+    <string name="no_deatils_available">No details available</string>
+
+    <string name="placeholder">Placeholder</string>
+
+    <string name="accept_low_quality">You are most likely to load this app FASTER when accepting this. This will also remove the launch patch icon on the main screen</string>
+    <string name="accept_high_quality">You are most likely to load this app SLOWER when accepting this. This will add the launch patch icon on the main screen if it is available</string>
+</resources>

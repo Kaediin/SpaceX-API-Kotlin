@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/first_stage_list_item"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/payload_header"
+        android:text="@string/placeholder"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:id="@+id/divider_fairing"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/payload_header"
+        android:background="@color/black" />
+
+    <TextView
+        android:id="@+id/payload_id_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divider_fairing"
+        android:text="Payload ID: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/payload_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider_fairing"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/reused_second_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/payload_id_title"
+        android:text="Reused: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/reused_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/payload_id_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/customers_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reused_second_title"
+        android:text="Customers: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/customers"
+        android:layout_width="fill_parent"
+        android:layout_toEndOf="@+id/customers_title"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reused_second_title"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="viewEnd"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nationality_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/customers"
+        android:text="Nationality: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nationality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/customers"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/manufacturer_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nationality_title"
+        android:text="Manufacturer: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/manufacturer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nationality_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/payload_type_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/manufacturer_title"
+        android:text="Payload type: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/payload_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/manufacturer_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/payload_mass_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/payload_type_title"
+        android:text="Payload mass (kg): "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/payload_mass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/payload_type_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/orbit_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/payload_mass_title"
+        android:text="Orbit: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/orbit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/payload_mass_title"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="50dp"
+        android:text="@string/placeholder"
+        android:textStyle="bold" />
+</RelativeLayout>
