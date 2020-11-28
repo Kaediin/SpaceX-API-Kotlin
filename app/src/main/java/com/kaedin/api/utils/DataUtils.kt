@@ -48,17 +48,26 @@ class DataUtils {
         }
 
         fun showHideUpcoming(filter: Filter): ArrayList<Launch> {
-            var newLaunches = Provider.allLaunches
-            if (!filter.showUpcoming) {
-                newLaunches = ArrayList<Launch>()
-                for (launch in Provider.allLaunches) {
-                    if (!launch.upcoming) {
-                        newLaunches.add(launch)
-                    }
-                }
+            val allLaunches = Provider.allLaunches
+
+            if (allLaunches[0].id != 1){
+                allLaunches.reverse()
             }
 
-            return newLaunches
+            if (!filter.showUpcoming) {
+                val newLaunches = ArrayList<Launch>()
+                for (launch in allLaunches) {
+                    if (!launch.upcoming) newLaunches.add(launch)
+                }
+
+                if (filter.reverseList) newLaunches.reverse()
+
+                return newLaunches
+            }
+
+            if (filter.reverseList) reverseList(allLaunches)
+
+            return allLaunches
         }
 
         fun getStringFromJSONArray(jsonArray: JSONArray): String {
