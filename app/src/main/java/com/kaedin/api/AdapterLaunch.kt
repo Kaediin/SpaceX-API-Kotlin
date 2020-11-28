@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.kaedin.api.model.Launch
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.list_item.view.*
@@ -36,13 +38,13 @@ class AdapterLaunch(private val context: Context,
         holder.relativeLayout.pattern.visibility = View.VISIBLE
         holder.relativeLayout.flight_details.setTextColor(Color.BLACK)
 
-        val id = launches.get(position).id
-        val details = launches.get(position).details
-        val mission = launches.get(position).mission
-        val missions_small_patch : Bitmap? = launches.get(position).mission_patch_small
-        val rocket = launches.get(position).rocket
-        val upcoming = launches.get(position).upcoming
-        val date = launches.get(position).launch_date
+        val id = launches[position].id
+        val details = launches[position].details
+        val mission = launches[position].mission
+        val missionsPatchUrl : String? = launches[position].mission_patch_url
+        val rocket = launches[position].rocket
+        val upcoming = launches[position].upcoming
+        val date = launches[position].launch_date
 
         holder.relativeLayout.flight_details.text = Html.fromHtml(details.substring(0, details.length.coerceAtMost(125)) +"... <br><b>[Read more!]</b>")
 
@@ -57,9 +59,13 @@ class AdapterLaunch(private val context: Context,
             }
         }
 
-        if (missions_small_patch != null){
-            holder.relativeLayout.pattern.setImageBitmap(missions_small_patch)
+        if (missionsPatchUrl != null && missionsPatchUrl != "null"){
+            println("Patch is not null!: $missionsPatchUrl")
+            Glide.with(context)
+                .load(missionsPatchUrl)
+                .into(holder.relativeLayout.pattern)
         } else {
+            println("Patch is null: $missionsPatchUrl")
             holder.relativeLayout.pattern.visibility = View.GONE
         }
 

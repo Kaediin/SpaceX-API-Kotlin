@@ -4,8 +4,7 @@ import java.io.Serializable
 
 data class Filter (
     var showUpcoming : Boolean,
-    var reverseList : Boolean,
-    var lowQuality : Boolean
+    var reverseList : Boolean
 ) : Serializable{
-    constructor() : this(true, false, false)
+    constructor() : this(true, false)
 }

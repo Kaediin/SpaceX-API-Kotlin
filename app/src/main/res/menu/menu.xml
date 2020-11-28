@@ -18,7 +18,4 @@
         android:title="Reverse list"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/low_quality"
-        android:title="Low quality"
-        app:showAsAction="never"/>
 </menu>

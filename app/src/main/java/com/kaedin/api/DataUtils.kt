@@ -22,7 +22,7 @@ class DataUtils {
 
         fun getDateTime(s: String): String? {
             return try {
-                val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm XXX")
+                val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm XXX", Locale.getDefault())
                 val netDate = Date(s.toLong() * 1000)
                 sdf.format(netDate)
             } catch (e: Exception) {
@@ -86,17 +86,17 @@ class DataUtils {
                 }
             }
             if (obj == Int) {
-                try {
-                    return jsonObject.getInt(valueparam).toString()
+                return try {
+                    jsonObject.getInt(valueparam).toString()
                 } catch (e: JSONException) {
-                    return "Not available"
+                    "Not available"
                 }
             }
             if (obj == Boolean) {
-                try {
-                    return jsonObject.getBoolean(valueparam).toString()
+                return try {
+                    jsonObject.getBoolean(valueparam).toString()
                 } catch (e: JSONException) {
-                    return "Not available"
+                    "Not available"
                 }
             }
             return "Not available"
@@ -106,21 +106,20 @@ class DataUtils {
 
         fun getBitmapFromString(url_string: String): Bitmap? {
 
-            try {
+            return try {
                 val url = URL(url_string)
                 val connection: HttpsURLConnection =
                     url.openConnection() as HttpsURLConnection
                 connection.doInput = true
                 connection.connect()
                 val input = connection.inputStream
-                val bitmap = BitmapFactory.decodeStream(input)
-//                bitmap = Bitmap.createScaledBitmap(bitmap, 100,100, false)
-//                val newbitmap = compressBitmap(bitmap, 1)
+                //                bitmap = Bitmap.createScaledBitmap(bitmap, 100,100, false)
+        //                val newbitmap = compressBitmap(bitmap, 1)
 
-                return bitmap
+                BitmapFactory.decodeStream(input)
             } catch (e: IOException) {
                 Log.e("Exceptions", e.toString())
-                return null
+                null
             }
         }
 

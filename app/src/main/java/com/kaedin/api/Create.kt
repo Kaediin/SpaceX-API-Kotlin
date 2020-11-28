@@ -2,6 +2,7 @@ package com.kaedin.api
 
 import Payload
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import com.kaedin.api.DataUtils.Companion.getStringFromJsonObject
 import com.kaedin.api.model.*
 import org.json.JSONException
@@ -12,39 +13,33 @@ class Create {
     companion object {
 
         fun launchTile(
-            filter: Filter,
-            launchJSON: JSONObject,
-            linksJSON: JSONObject,
-            rocketJSON: JSONObject
+            launchJSON: JSONObject
         ): Launch {
+
+            val linksJSON = launchJSON.getJSONObject("links")
+            val rocketJSON = launchJSON.getJSONObject("rocket")
+
             // Launch object vars
             val id = launchJSON.getInt("flight_number")
             val details = launchJSON.getString("details")
             val mission = launchJSON.getString("mission_name")
-            var mission_patch_small: Bitmap? = null
-
-            if (!filter.lowQuality) {
-                mission_patch_small =
-                    DataUtils.getBitmapFromString(linksJSON.getString("mission_patch_small"))
-            }
+            val missionPatchUrl = linksJSON.getString("mission_patch_small")
 
             val rocket = rocketJSON.getString("rocket_name")
             val upcoming = launchJSON.getBoolean("upcoming")
-            var launch_date = DataUtils.getDateTime(launchJSON.getString("launch_date_unix"))
+            var launchDate = DataUtils.getDateTime(launchJSON.getString("launch_date_unix"))
 
-            if (launch_date == null) launch_date = "No date available"
-//            println(id)
-            val launch = Launch(
+            if (launchDate == null) launchDate = "No date available"
+
+            return Launch(
                 id,
                 details,
                 mission,
-                mission_patch_small,
+                missionPatchUrl,
                 rocket,
                 upcoming,
-                launch_date
+                launchDate
             )
-
-            return launch
         }
 
         fun rocket(launchJSON: JSONObject) : Rocket {

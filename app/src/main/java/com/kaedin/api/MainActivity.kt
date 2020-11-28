@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.api.model.Filter
 import com.kaedin.api.model.Launch
 import com.google.android.material.snackbar.Snackbar
+import com.kaedin.api.asynctasks.ApiRequest
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_quality.view.*
 import okhttp3.*
-import org.json.JSONArray
 import java.io.IOException
 import kotlin.collections.ArrayList
 
@@ -33,13 +33,11 @@ class MainActivity : AppCompatActivity() {
 
     private var filter: Filter = Filter()
 
-    private var currentLaunches = ArrayList<Launch>()
+    var currentLaunches = ArrayList<Launch>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        updateProgressBar(0, "Loading app...")
 
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
@@ -54,7 +52,6 @@ class MainActivity : AppCompatActivity() {
 
         filter.showUpcoming = showUpcoming
         filter.reverseList = reverseList
-        filter.lowQuality = lowQuality
 
         run()
     }
@@ -63,18 +60,12 @@ class MainActivity : AppCompatActivity() {
         val infalter: MenuInflater = menuInflater
         infalter.inflate(R.menu.menu, menu)
         val switch_upcoming: MenuItem = menu!!.findItem(R.id.switch_upcoming)
-        val quality: MenuItem = menu.findItem(R.id.low_quality)
         if (filter.showUpcoming) {
             switch_upcoming.title = "Hide upcoming"
         } else {
             switch_upcoming.title = "Show upcoming"
         }
 
-        if (filter.lowQuality) {
-            quality.title = "Activate high quality"
-        } else {
-            quality.title = "Activate low quality"
-        }
         return true
     }
 
@@ -130,56 +121,19 @@ class MainActivity : AppCompatActivity() {
                 display()
                 return true
             }
-
-            R.id.low_quality -> {
-                if (progress_horizontal.visibility == View.VISIBLE) {
-                    makeSnackbar("Please wait for the content to load", Snackbar.LENGTH_SHORT)
-                    return false
-                }
-
-                val builder = AlertDialog.Builder(this)
-                val inflater = LayoutInflater.from(this)
-                val popupView = inflater.inflate(R.layout.dialog_quality, null)
-                setViewDialog(popupView)
-                builder.setView(popupView)
-                val dialog = builder.create()
-                dialog.show()
-
-                popupView.accept_quality.setOnClickListener {
-                    filter.lowQuality = !filter.lowQuality
-                    editor = sp_lowQuality.edit()
-                    editor.putBoolean("low_quality", filter.lowQuality)
-                    editor.apply()
-                    dialog.dismiss()
-                    makeSnackbar(
-                        "Quality will be changed when you restart the app",
-                        Snackbar.LENGTH_LONG
-                    )
-                }
-                return true
-            }
             else -> {
                 super.onOptionsItemSelected(item)
             }
         }
     }
 
-    fun setViewDialog(view: View) {
-        if (filter.lowQuality) {
-            view.tv_dialog_quality.text = this.resources.getString(R.string.accept_high_quality)
-        } else {
-            view.tv_dialog_quality.text = this.resources.getString(R.string.accept_low_quality)
-        }
-    }
-
     fun run() {
-        var progress = 10
         val url = "https://api.spacexdata.com/v3/launches"
         val request = Request.Builder()
             .url(url)
             .build()
 
-        updateProgressBar(10, "Establishing a connection with SpaceX...")
+        updateProgressBar(0, "Trying to establishing a connection with SpaceX", null)
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
@@ -188,24 +142,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                val json_array = JSONArray(response.body()!!.string())
-                val launches = ArrayList<Launch>()
-
-                for (i in 0 until json_array.length()) {
-                    // JSON vars
-                    val launchJSON = json_array.getJSONObject(i)
-                    val linksJSON = launchJSON.getJSONObject("links")
-                    val rocketJSON = launchJSON.getJSONObject("rocket")
-
-                    val launch = Create.launchTile(filter, launchJSON, linksJSON, rocketJSON)
-
-                    launches.add(launch)
-                    updateProgressBar(progress, "Fetching data from SpaceX...")
-                    progress += 1
-                }
-                Provider.allLaunches = launches
-                currentLaunches = DataUtils.filterFirstLoad(filter)
-                display()
+                ApiRequest(this@MainActivity, filter).execute(response)
             }
         })
 
@@ -213,7 +150,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun display() {
-        Thread(Runnable {
+        Thread {
             this.runOnUiThread {
                 val recyclerView = findViewById<RecyclerView>(R.id.rv)
                 recyclerView.layoutManager = LinearLayoutManager(this)
@@ -223,23 +160,36 @@ class MainActivity : AppCompatActivity() {
                 progress_horizontal.visibility = View.GONE
                 adapter.notifyDataSetChanged()
             }
-        }).start()
+        }.start()
     }
 
-    fun makeSnackbar(message: String, snackbar_length: Int) {
+    fun makeSnackbar(message: String, snackbarLength: Int) {
         Snackbar.make(
             this.findViewById(R.id.mainActivity),
             message,
-            snackbar_length
+            snackbarLength
         ).show()
     }
 
-    fun updateProgressBar(progress : Int, text : String) {
-        Thread(Runnable {
+    fun updateProgressBar(progress: Int, text: String, limit: Int?) {
+        Thread {
             this.runOnUiThread {
                 text_progress.text = text
                 progress_horizontal.progress = progress
+                if (limit != null) {
+                    progress_horizontal.max = limit
+                }
             }
-        }).start()
+        }.start()
+    }
+
+    fun updateImages(launches : ArrayList<Launch>){
+        Thread{
+            this.runOnUiThread {
+                currentLaunches = launches
+                adapter.notifyDataSetChanged()
+            }
+        }
+
     }
 }
