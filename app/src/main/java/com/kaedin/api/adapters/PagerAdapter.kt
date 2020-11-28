@@ -1,18 +1,18 @@
-package com.kaedin.api
+package com.kaedin.api.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.kaedin.api.fragments.launchInfoFragment
-import com.kaedin.api.fragments.rocketFragment
+import com.kaedin.api.fragments.LaunchInfoFragment
+import com.kaedin.api.fragments.RocketFragment
 
 class PagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         return when (position){
-            0 -> launchInfoFragment()
+            0 -> LaunchInfoFragment()
 
-            else -> rocketFragment()
+            else -> RocketFragment()
         }
     }
 

@@ -1,10 +1,10 @@
-package com.kaedin.api
+package com.kaedin.api.utils
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
-import com.kaedin.api.model.Filter
-import com.kaedin.api.model.Launch
+import com.kaedin.api.models.Filter
+import com.kaedin.api.models.Launch
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

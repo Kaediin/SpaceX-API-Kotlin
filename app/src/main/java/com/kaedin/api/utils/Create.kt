@@ -1,10 +1,9 @@
-package com.kaedin.api
+package com.kaedin.api.utils
 
 import Payload
 import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import com.kaedin.api.DataUtils.Companion.getStringFromJsonObject
-import com.kaedin.api.model.*
+import com.kaedin.api.utils.DataUtils.Companion.getStringFromJsonObject
+import com.kaedin.api.models.*
 import org.json.JSONException
 import org.json.JSONObject
 

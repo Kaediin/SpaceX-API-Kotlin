@@ -1,10 +1,8 @@
-package com.kaedin.api
+package com.kaedin.api.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +10,10 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.kaedin.api.model.Launch
+import com.kaedin.api.models.Launch
 import com.google.android.material.snackbar.Snackbar
+import com.kaedin.api.DetailActivity
+import com.kaedin.api.R
 import kotlinx.android.synthetic.main.list_item.view.*
 import java.util.ArrayList
 
@@ -60,12 +60,10 @@ class AdapterLaunch(private val context: Context,
         }
 
         if (missionsPatchUrl != null && missionsPatchUrl != "null"){
-            println("Patch is not null!: $missionsPatchUrl")
             Glide.with(context)
                 .load(missionsPatchUrl)
                 .into(holder.relativeLayout.pattern)
         } else {
-            println("Patch is null: $missionsPatchUrl")
             holder.relativeLayout.pattern.visibility = View.GONE
         }
 

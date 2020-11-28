@@ -1,4 +1,4 @@
-package com.kaedin.api.model
+package com.kaedin.api.models
 
 import android.graphics.Bitmap
 import java.io.Serializable

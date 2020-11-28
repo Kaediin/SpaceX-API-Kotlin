@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.kaedin.api.Create
+import com.kaedin.api.utils.Create
 import com.kaedin.api.DetailActivity
 import com.kaedin.api.R
-import com.kaedin.api.model.LaunchDetails
-import com.kaedin.api.model.Links
+import com.kaedin.api.models.LaunchDetails
+import com.kaedin.api.models.Links
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.launch_info_template.*
 import kotlinx.android.synthetic.main.launch_info_template.view.*
@@ -20,7 +20,7 @@ import org.json.JSONArray
 import java.io.IOException
 
 
-class launchInfoFragment : Fragment() {
+class LaunchInfoFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,7 +32,7 @@ class launchInfoFragment : Fragment() {
         return view
     }
 
-    fun display(view: View) {
+    private fun display(view: View) {
         val id = activity!!.intent.extras!!.getInt("launch", -1)
 
         val client = OkHttpClient()
@@ -81,7 +81,7 @@ class launchInfoFragment : Fragment() {
         }
     }
 
-    fun setView(view : View, links: Links?){
+    private fun setView(view : View, links: Links?){
         (activity as DetailActivity?)?.runOnUiThread {
 
             view.youtube_details.setOnClickListener {

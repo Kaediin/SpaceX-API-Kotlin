@@ -1,7 +1,5 @@
-package com.kaedin.api.model
+package com.kaedin.api.models
 
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import java.io.Serializable
 
 data class Launch (

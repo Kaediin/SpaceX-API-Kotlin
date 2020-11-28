@@ -8,13 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.api.*
-import com.kaedin.api.model.*
+import com.kaedin.api.adapters.AdapterCores
+import com.kaedin.api.adapters.AdapterPayload
+import com.kaedin.api.models.*
+import com.kaedin.api.utils.Create
 import kotlinx.android.synthetic.main.rocket_template.view.*
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException
 
-class rocketFragment : Fragment() {
+class RocketFragment : Fragment() {
 
     private lateinit var recyclerView_first: RecyclerView
     private lateinit var recyclerView_second: RecyclerView

@@ -1,16 +1,16 @@
 package com.kaedin.api.asynctasks
 
 import android.os.AsyncTask
-import com.kaedin.api.Create
-import com.kaedin.api.DataUtils
+import com.kaedin.api.utils.Create
+import com.kaedin.api.utils.DataUtils
 import com.kaedin.api.MainActivity
-import com.kaedin.api.Provider
-import com.kaedin.api.model.Launch
+import com.kaedin.api.utils.Provider
+import com.kaedin.api.models.Launch
 import okhttp3.Response
 import org.json.JSONArray
 
 class ApiRequest(private var activity: MainActivity,
-                 private var filter: com.kaedin.api.model.Filter
+                 private var filter: com.kaedin.api.models.Filter
 ) : AsyncTask<Response, String, ArrayList<Launch>>() {
 
     override fun onPreExecute() {

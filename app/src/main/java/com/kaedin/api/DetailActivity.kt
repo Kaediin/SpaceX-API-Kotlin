@@ -2,6 +2,7 @@ package com.kaedin.api
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.kaedin.api.adapters.PagerAdapter
 import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {
