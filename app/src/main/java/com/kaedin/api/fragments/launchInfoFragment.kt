@@ -1,4 +1,4 @@
-package com.example.api.fragments
+package com.kaedin.api.fragments
 
 import android.content.Intent
 import android.net.Uri
@@ -6,13 +6,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.api.Create
-import com.example.api.DetailActivity
-import com.example.api.R
-import com.example.api.model.LaunchDetails
-import com.example.api.model.Links
+import com.kaedin.api.Create
+import com.kaedin.api.DetailActivity
+import com.kaedin.api.R
+import com.kaedin.api.model.LaunchDetails
+import com.kaedin.api.model.Links
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.launch_info_template.*
 import kotlinx.android.synthetic.main.launch_info_template.view.*

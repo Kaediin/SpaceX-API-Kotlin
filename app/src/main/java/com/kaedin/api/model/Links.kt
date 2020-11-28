@@ -1,4 +1,4 @@
-package com.example.api.model
+package com.kaedin.api.model
 
 import java.io.Serializable
 

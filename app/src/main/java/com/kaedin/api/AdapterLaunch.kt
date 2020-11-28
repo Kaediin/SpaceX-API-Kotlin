@@ -1,4 +1,4 @@
-package com.example.api
+package com.kaedin.api
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.example.api.model.Launch
+import com.kaedin.api.model.Launch
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.list_item.view.*
 import java.util.ArrayList

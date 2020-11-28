@@ -1,10 +1,9 @@
-package com.example.api
+package com.kaedin.api
 
 import Payload
 import android.graphics.Bitmap
-import com.example.api.DataUtils.Companion.getStringFromJsonObject
-import com.example.api.fragments.rocketFragment
-import com.example.api.model.*
+import com.kaedin.api.DataUtils.Companion.getStringFromJsonObject
+import com.kaedin.api.model.*
 import org.json.JSONException
 import org.json.JSONObject
 

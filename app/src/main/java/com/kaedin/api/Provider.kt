@@ -1,7 +1,7 @@
-package com.example.api
+package com.kaedin.api
 
-import com.example.api.model.Launch
-import com.example.api.model.Rocket
+import com.kaedin.api.model.Launch
+import com.kaedin.api.model.Rocket
 
 class Provider {
 

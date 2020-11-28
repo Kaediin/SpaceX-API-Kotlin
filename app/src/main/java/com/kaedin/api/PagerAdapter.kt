@@ -1,10 +1,10 @@
-package com.example.api
+package com.kaedin.api
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.api.fragments.launchInfoFragment
-import com.example.api.fragments.rocketFragment
+import com.kaedin.api.fragments.launchInfoFragment
+import com.kaedin.api.fragments.rocketFragment
 
 class PagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
 

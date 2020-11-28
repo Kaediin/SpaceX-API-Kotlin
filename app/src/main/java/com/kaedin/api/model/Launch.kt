@@ -1,8 +1,7 @@
-package com.example.api.model
+package com.kaedin.api.model
 
 import android.graphics.Bitmap
 import java.io.Serializable
-import kotlin.properties.Delegates
 
 data class Launch (
     var id : Int,

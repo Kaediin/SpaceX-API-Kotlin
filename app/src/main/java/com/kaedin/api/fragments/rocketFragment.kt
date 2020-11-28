@@ -1,6 +1,5 @@
-package com.example.api.fragments
+package com.kaedin.api.fragments
 
-import Payload
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,16 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.api.*
-import com.example.api.model.*
-import kotlinx.android.synthetic.main.first_stage_list_item.view.*
+import com.kaedin.api.*
+import com.kaedin.api.model.*
 import kotlinx.android.synthetic.main.rocket_template.view.*
 import okhttp3.*
 import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
 import java.io.IOException
-import java.sql.Array
 
 class rocketFragment : Fragment() {
 

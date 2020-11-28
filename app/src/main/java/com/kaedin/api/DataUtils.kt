@@ -1,17 +1,13 @@
-package com.example.api
+package com.kaedin.api
 
-import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
-import androidx.core.graphics.scale
-import com.example.api.model.Filter
-import com.example.api.model.Launch
-import okhttp3.*
+import com.kaedin.api.model.Filter
+import com.kaedin.api.model.Launch
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.net.URL
 import java.text.SimpleDateFormat

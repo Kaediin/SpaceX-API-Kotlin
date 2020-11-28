@@ -1,4 +1,4 @@
-package com.example.api
+package com.kaedin.api
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

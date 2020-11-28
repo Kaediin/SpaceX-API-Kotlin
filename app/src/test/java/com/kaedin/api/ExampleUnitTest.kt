@@ -1,4 +1,4 @@
-package com.example.api
+package com.kaedin.api
 
 import org.junit.Test
 

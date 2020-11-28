@@ -1,4 +1,4 @@
-package com.example.api
+package com.kaedin.api
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -9,14 +9,13 @@ import android.view.*
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.api.model.Filter
-import com.example.api.model.Launch
+import com.kaedin.api.model.Filter
+import com.kaedin.api.model.Launch
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_quality.view.*
 import okhttp3.*
 import org.json.JSONArray
-import org.json.JSONException
 import java.io.IOException
 import kotlin.collections.ArrayList
 

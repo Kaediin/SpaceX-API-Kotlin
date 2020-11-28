@@ -1,4 +1,4 @@
-package com.example.api
+package com.kaedin.api
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

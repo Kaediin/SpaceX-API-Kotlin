@@ -1,4 +1,4 @@
-package com.example.api
+package com.kaedin.api
 
 import Payload
 import android.content.Context
@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.example.api.model.SecondStage
-import kotlinx.android.synthetic.main.first_stage_list_item.view.*
 import kotlinx.android.synthetic.main.second_stage_list_item.view.*
 
 class AdapterPayload(private val context: Context,
