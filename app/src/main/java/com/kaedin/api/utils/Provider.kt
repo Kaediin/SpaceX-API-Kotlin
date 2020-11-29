@@ -6,8 +6,6 @@ import com.kaedin.api.models.Rocket
 class Provider {
 
     companion object {
-
         var allLaunches = ArrayList<Launch>()
-        var rocket = Rocket()
     }
 }

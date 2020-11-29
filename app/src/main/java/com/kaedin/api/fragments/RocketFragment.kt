@@ -15,6 +15,7 @@ import com.kaedin.api.utils.Create
 import kotlinx.android.synthetic.main.rocket_template.view.*
 import okhttp3.*
 import org.json.JSONArray
+import org.json.JSONObject
 import java.io.IOException
 
 class RocketFragment : Fragment() {
@@ -40,7 +41,7 @@ class RocketFragment : Fragment() {
         val id = activity!!.intent.extras!!.getInt("launch", -1)
 
         val client = OkHttpClient()
-        val url = "https://api.spacexdata.com/v3/launches"
+        val url = "https://api.spacexdata.com/v3/launches/$id"
         val request = Request.Builder()
             .url(url)
             .build()
@@ -49,25 +50,16 @@ class RocketFragment : Fragment() {
             override fun onFailure(call: Call, e: IOException) {}
             override fun onResponse(call: Call, response: Response) {
 
-                val json_array = JSONArray(response.body()!!.string())
-                for (i in 0 until json_array.length()) {
-                    // JSON vars
-                    val launchJSON = json_array.getJSONObject(i)
-                    val fl = launchJSON.getInt("flight_number")
-                    if (id == fl) {
+                val launchJSON = JSONObject(response.body()!!.string())
+                val rocket = Create.rocket(launchJSON)
+                setView(view, rocket)
 
-                        val rocket = Create.rocket(launchJSON)
 
-                        setView(view, rocket)
-                        break
-                    }
-                }
             }
         })
 
 
     }
-
 
 
     fun setView(view: View, rocket: Rocket) {
