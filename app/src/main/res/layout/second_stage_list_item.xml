@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/first_stage_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/main_background"
     android:padding="20dp">
 
     <TextView
         android:id="@+id/payload_header"
-        android:text="@string/placeholder"
-        android:textColor="@color/black"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder"
+        android:textColor="@color/main_text"
+        android:textStyle="bold" />
 
     <View
         android:id="@+id/divider_fairing"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/payload_header"
-        android:background="@color/black" />
+        android:background="@color/white" />
 
     <TextView
         android:id="@+id/payload_id_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/divider_fairing"
-        android:text="Payload ID: "
+        android:text="@string/payload_id"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -36,6 +38,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -43,7 +46,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/payload_id_title"
-        android:text="Reused: "
+        android:text="@string/reused"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -54,6 +58,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -61,19 +66,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/reused_second_title"
-        android:text="Customers: "
+        android:text="@string/customers"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/customers"
         android:layout_width="fill_parent"
-        android:layout_toEndOf="@+id/customers_title"
         android:layout_height="wrap_content"
         android:layout_below="@+id/reused_second_title"
         android:layout_alignParentEnd="true"
-        android:textAlignment="viewEnd"
+        android:layout_toEndOf="@+id/customers_title"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -81,7 +88,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/customers"
-        android:text="Nationality: "
+        android:text="@string/nationality"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -92,6 +100,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -99,7 +108,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nationality_title"
-        android:text="Manufacturer: "
+        android:text="@string/manufacturer"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -110,6 +120,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -117,7 +128,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/manufacturer_title"
-        android:text="Payload type: "
+        android:text="@string/payload_type"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -128,6 +140,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -135,7 +148,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/payload_type_title"
-        android:text="Payload mass (kg): "
+        android:text="@string/payload_mass_kg"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -146,6 +160,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -153,7 +168,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/payload_mass_title"
-        android:text="Orbit: "
+        android:text="@string/orbit"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -164,5 +180,6 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 </RelativeLayout>

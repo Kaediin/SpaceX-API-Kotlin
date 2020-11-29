@@ -22,11 +22,11 @@ class DetailActivity : AppCompatActivity() {
 
     fun onDataSetChanged() {
         if (viewpager_main != null) {
-            Thread(Runnable {
+            Thread {
                 this.runOnUiThread {
                     viewpager_main.adapter!!.notifyDataSetChanged()
                 }
-            })
+            }
         }
     }
 

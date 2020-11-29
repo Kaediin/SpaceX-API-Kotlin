@@ -6,6 +6,27 @@
 
     <string name="placeholder">Placeholder</string>
 
-    <string name="accept_low_quality">You are most likely to load this app FASTER when accepting this. This will also remove the launch patch icon on the main screen</string>
-    <string name="accept_high_quality">You are most likely to load this app SLOWER when accepting this. This will add the launch patch icon on the main screen if it is available</string>
+    <string name="core_serial">Core serial:</string>
+    <string name="flight">Flight:</string>
+    <string name="block">Block:</string>
+    <string name="gridfins">Gridfins:</string>
+    <string name="legs">Legs:</string>
+    <string name="resued">Resued:</string>
+    <string name="land_success">Land success:</string>
+    <string name="landing_intent">Landing intent:</string>
+    <string name="landing_type">Landing type:</string>
+    <string name="landing_vehicle">Landing vehicle:</string>
+    <string name="details">Details:</string>
+    <string name="ship">Ship:</string>
+    <string name="recovered">Recovered:</string>
+    <string name="recovery_attempted">Recovery attempted:</string>
+    <string name="fairing">Fairing:</string>
+    <string name="orbit">Orbit:</string>
+    <string name="payload_mass_kg">Payload mass (kg):</string>
+    <string name="payload_type">Payload type:</string>
+    <string name="manufacturer">Manufacturer:</string>
+    <string name="nationality">Nationality:</string>
+    <string name="customers">Customers:</string>
+    <string name="reused">Reused:</string>
+    <string name="payload_id">Payload ID:</string>
 </resources>

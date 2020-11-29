@@ -47,6 +47,7 @@ class AdapterLaunch(private val context: Context,
         val date = launches[position].launch_date
 
         holder.relativeLayout.flight_details.text = Html.fromHtml(details.substring(0, details.length.coerceAtMost(125)) +"... <br><b>[Read more!]</b>")
+        holder.relativeLayout.flight_details.setTextColor(Color.WHITE)
 
         if(upcoming){
             if (details == "null"){

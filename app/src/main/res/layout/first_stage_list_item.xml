@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/first_stage_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/main_background"
     android:padding="20dp">
 
     <TextView
         android:id="@+id/core_header"
-        android:text="@string/placeholder"
-        android:textColor="@color/black"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder"
+        android:textColor="@color/main_text"
+        android:textStyle="bold" />
 
     <View
         android:id="@+id/divider_fairing"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/core_header"
-        android:background="@color/black" />
+        android:background="@color/main_text" />
 
     <TextView
         android:id="@+id/core_serial_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/divider_fairing"
-        android:text="Core serial: "
+        android:text="@string/core_serial"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -36,6 +38,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -43,7 +46,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/core_serial_title"
-        android:text="Flight: "
+        android:text="@string/flight"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -54,6 +58,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -61,7 +66,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/flight_title"
-        android:text="Block: "
+        android:text="@string/block"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -72,6 +78,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -79,7 +86,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/block_title"
-        android:text="Gridfins: "
+        android:text="@string/gridfins"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -90,6 +98,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -97,7 +106,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/gridfins_title"
-        android:text="Legs: "
+        android:text="@string/legs"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -108,6 +118,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -115,7 +126,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/legs_title"
-        android:text="Resued: "
+        android:text="@string/resued"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -126,6 +138,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -133,7 +146,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/reused_core_title"
-        android:text="Land success: "
+        android:text="@string/land_success"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -144,6 +158,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -151,17 +166,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/land_success_core_title"
-        android:text="Landing intent: "
+        android:text="@string/landing_intent"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/landing_intent"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
         android:layout_below="@+id/land_success_core_title"
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -169,7 +187,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/landing_intent_title"
-        android:text="Landing type: "
+        android:text="@string/landing_type"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -180,6 +199,7 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -187,7 +207,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/landing_type_title"
-        android:text="Landing vehicle: "
+        android:text="@string/landing_vehicle"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 
     <TextView
@@ -198,5 +219,6 @@
         android:layout_alignParentEnd="true"
         android:paddingEnd="50dp"
         android:text="@string/placeholder"
+        android:textColor="@color/main_text"
         android:textStyle="bold" />
 </RelativeLayout>

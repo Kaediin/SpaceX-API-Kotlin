@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/main_background">
 
     <ProgressBar
         android:id="@+id/progress_rocket"
@@ -46,8 +47,8 @@
                     android:id="@+id/fairing_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fairing:"
-                    android:textColor="@color/black"
+                    android:text="@string/fairing"
+                    android:textColor="@color/main_text"
                     android:textStyle="bold" />
 
                 <View
@@ -55,14 +56,15 @@
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
                     android:layout_below="@+id/fairing_title"
-                    android:background="@color/black" />
+                    android:background="@color/white" />
 
                 <TextView
                     android:id="@+id/Reused_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/divider_fairing"
-                    android:text="Reused: "
+                    android:text="@string/reused"
+                    android:textColor="@color/main_text"
                     android:textStyle="bold" />
 
                 <TextView
@@ -73,6 +75,7 @@
                     android:layout_alignParentEnd="true"
                     android:paddingEnd="50dp"
                     android:text="@string/placeholder"
+                    android:textColor="@color/main_text"
                     android:textStyle="bold" />
 
                 <TextView
@@ -80,7 +83,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/reused"
-                    android:text="Recovery attempted: "
+                    android:text="@string/recovery_attempted"
+                    android:textColor="@color/main_text"
                     android:textStyle="bold" />
 
                 <TextView
@@ -91,6 +95,7 @@
                     android:layout_alignParentEnd="true"
                     android:paddingEnd="50dp"
                     android:text="@string/placeholder"
+                    android:textColor="@color/main_text"
                     android:textStyle="bold" />
 
                 <TextView
@@ -98,7 +103,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/recoveryAttempt"
-                    android:text="Recovered: "
+                    android:text="@string/recovered"
+                    android:textColor="@color/main_text"
                     android:textStyle="bold" />
 
                 <TextView
@@ -109,6 +115,7 @@
                     android:layout_alignParentEnd="true"
                     android:paddingEnd="50dp"
                     android:text="@string/placeholder"
+                    android:textColor="@color/main_text"
                     android:textStyle="bold" />
 
                 <TextView
@@ -116,7 +123,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/recovered"
-                    android:text="Ship: "
+                    android:text="@string/ship"
+                    android:textColor="@color/main_text"
                     android:textStyle="bold" />
 
                 <TextView
@@ -127,6 +135,7 @@
                     android:layout_alignParentEnd="true"
                     android:paddingEnd="50dp"
                     android:text="@string/placeholder"
+                    android:textColor="@color/main_text"
                     android:textStyle="bold" />
             </RelativeLayout>
         </RelativeLayout>
