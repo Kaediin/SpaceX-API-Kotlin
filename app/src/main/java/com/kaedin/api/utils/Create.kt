@@ -122,7 +122,6 @@ class Create {
                         val payloads = ArrayList<Payload>()
                         for (i in 0 until payloadsJSON.length()) {
                             try {
-                                println("line 1")
                                 val payloadJSON = payloadsJSON.getJSONObject(i)
 
                                 val payload_id = getStringFromJsonObject(

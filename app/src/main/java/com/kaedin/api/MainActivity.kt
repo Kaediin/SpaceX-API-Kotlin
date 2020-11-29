@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.StrictMode
 import android.view.*
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.api.models.Filter
@@ -14,6 +15,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.kaedin.api.adapters.AdapterLaunch
 import com.kaedin.api.asynctasks.ApiRequest
 import com.kaedin.api.utils.DataUtils
+import com.kaedin.api.utils.SimpleDividerItemDecoration
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import java.io.IOException
@@ -147,6 +149,7 @@ class MainActivity : AppCompatActivity() {
                 recyclerView.adapter = adapter
                 text_progress.visibility = View.GONE
                 progress_horizontal.visibility = View.GONE
+                recyclerView.addItemDecoration(SimpleDividerItemDecoration(this))
                 adapter.notifyDataSetChanged()
             }
         }.start()
