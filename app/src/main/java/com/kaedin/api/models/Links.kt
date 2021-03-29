@@ -7,7 +7,9 @@ data class Links(
     var reddit : String,
     var news : String,
     var wikipedia : String,
-    var spacex : String
-) : Serializable {
-    constructor() : this("","","","","")
+    var spacex : String,
+    var flickr_images : ArrayList<String>?,
+    var mission_patch_small : String?
+    ) : Serializable {
+    constructor() : this("","","","","", null, null)
 }

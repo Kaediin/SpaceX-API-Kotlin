@@ -1,185 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/first_stage_list_item"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/second_stage_list_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/main_background"
-    android:padding="20dp">
+    app:cardCornerRadius="20dp">
 
-    <TextView
-        android:id="@+id/payload_header"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/placeholder"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+        android:background="@color/main_background"
+        android:padding="20dp">
 
-    <View
-        android:id="@+id/divider_fairing"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/payload_header"
-        android:background="@color/white" />
 
-    <TextView
-        android:id="@+id/payload_id_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/divider_fairing"
-        android:text="@string/payload_id"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+        <RelativeLayout
+            android:id="@+id/rel_second_stage_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/first_stage_row_item">
 
-    <TextView
-        android:id="@+id/payload_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/divider_fairing"
-        android:layout_alignParentEnd="true"
-        android:paddingEnd="50dp"
-        android:text="@string/placeholder"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Second stage"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/reused_second_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/payload_id_title"
-        android:text="@string/reused"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/reused_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/payload_id_title"
-        android:layout_alignParentEnd="true"
-        android:paddingEnd="50dp"
-        android:text="@string/placeholder"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+        <RelativeLayout
+            android:id="@+id/rel_second_stage_thrust_vacuum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_second_stage_header"
+            android:padding="@dimen/first_stage_row_item">
 
-    <TextView
-        android:id="@+id/customers_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/reused_second_title"
-        android:text="@string/customers"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/second_stage_thrust_vacuum_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thrust"
+                android:textColor="@color/main_text"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/customers"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/reused_second_title"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/customers_title"
-        android:paddingEnd="50dp"
-        android:text="@string/placeholder"
-        android:textAlignment="viewEnd"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/second_stage_thrust_vacuum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/placeholder"
+                android:textColor="@color/text_rocket_details"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/nationality_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/customers"
-        android:text="@string/nationality"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/nationality"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/customers"
-        android:layout_alignParentEnd="true"
-        android:paddingEnd="50dp"
-        android:text="@string/placeholder"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+        <RelativeLayout
+            android:id="@+id/rel_second_stage_engines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_second_stage_thrust_vacuum"
+            android:padding="@dimen/first_stage_row_item">
 
-    <TextView
-        android:id="@+id/manufacturer_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nationality_title"
-        android:text="@string/manufacturer"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/second_stage_engines_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/engines"
+                android:textColor="@color/main_text"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/manufacturer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nationality_title"
-        android:layout_alignParentEnd="true"
-        android:paddingEnd="50dp"
-        android:text="@string/placeholder"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/second_stage_engines"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/placeholder"
+                android:textColor="@color/text_rocket_details"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/payload_type_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/manufacturer_title"
-        android:text="@string/payload_type"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+        <RelativeLayout
+            android:id="@+id/rel_second_stage_fuel_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_second_stage_engines"
+            android:padding="@dimen/first_stage_row_item">
 
-    <TextView
-        android:id="@+id/payload_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/manufacturer_title"
-        android:layout_alignParentEnd="true"
-        android:paddingEnd="50dp"
-        android:text="@string/placeholder"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/second_stage_fuel_amount_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fuel_amount_in_tons"
+                android:textColor="@color/main_text"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/payload_mass_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/payload_type_title"
-        android:text="@string/payload_mass_kg"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/second_stage_fuel_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/placeholder"
+                android:textColor="@color/text_rocket_details"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/payload_mass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/payload_type_title"
-        android:layout_alignParentEnd="true"
-        android:paddingEnd="50dp"
-        android:text="@string/placeholder"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/orbit_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/payload_mass_title"
-        android:text="@string/orbit"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
+        <RelativeLayout
+            android:id="@+id/rel_second_stage_burn_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_second_stage_fuel_amount"
+            android:padding="@dimen/first_stage_row_item">
 
-    <TextView
-        android:id="@+id/orbit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/payload_mass_title"
-        android:layout_alignParentEnd="true"
-        android:paddingEnd="50dp"
-        android:text="@string/placeholder"
-        android:textColor="@color/main_text"
-        android:textStyle="bold" />
-</RelativeLayout>
+            <TextView
+                android:id="@+id/second_stage_burn_time_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/burn_time_in_seconds"
+                android:textColor="@color/main_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/second_stage_burn_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/placeholder"
+                android:textColor="@color/text_rocket_details"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_second_stage_reused"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_second_stage_burn_time"
+            android:padding="@dimen/first_stage_row_item">
+
+            <TextView
+                android:id="@+id/second_stage_reused_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reuseable"
+                android:textColor="@color/main_text"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/second_stage_reused"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_questionmark" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_second_stage_divider"
+            android:layout_width="match_parent"
+            android:layout_below="@id/rel_second_stage_reused"
+            android:padding="@dimen/first_stage_row_item"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_second_stage_payloads_header"
+            android:layout_width="match_parent"
+            android:layout_below="@id/rel_second_stage_divider"
+            android:padding="@dimen/first_stage_row_item"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Payloads"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_second_stage_composite_fairing_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_second_stage_payloads_header"
+            android:padding="@dimen/first_stage_row_item">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Composite fairing height"
+                android:textColor="@color/main_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/second_stage_composite_fairing_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/placeholder"
+                android:textColor="@color/text_rocket_details"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_second_stage_composite_fairing_diameter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_second_stage_composite_fairing_height"
+            android:padding="@dimen/first_stage_row_item">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Composite fairing diameter"
+                android:textColor="@color/main_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/second_stage_composite_fairing_diameter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/placeholder"
+                android:textColor="@color/text_rocket_details"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_second_stage_paylods_option_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_second_stage_composite_fairing_diameter"
+            android:padding="@dimen/first_stage_row_item">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Option 1"
+                android:textColor="@color/main_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/second_stage_paylods_option_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/placeholder"
+                android:textColor="@color/text_rocket_details"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

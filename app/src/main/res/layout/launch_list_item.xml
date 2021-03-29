@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/main_background"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/flight_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/main_text"
+            android:textSize="9sp" />
+
+        <ImageView
+            android:id="@+id/pattern"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/flight_number"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp" />
+
+
+        <TextView
+            android:id="@+id/mission_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/flight_number"
+            android:layout_toEndOf="@+id/pattern"
+            android:text="@string/placeholder"
+            android:textColor="@color/main_text"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/flight_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mission_name"
+            android:layout_toEndOf="@+id/pattern"
+            android:text="@string/placeholder"
+            android:textColor="@color/main_text" />
+
+        <TextView
+            android:id="@+id/date_launch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:paddingTop="10dp"
+            android:text="@string/placeholder"
+            android:textColor="@color/text_alt" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

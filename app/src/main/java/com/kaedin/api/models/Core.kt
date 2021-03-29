@@ -3,18 +3,15 @@ package com.kaedin.api.models
 import java.io.Serializable
 
 data class Core(
-    var core_serial : String?,
-    var flight : String?,
-    var block : String?,
-    var gridfins : String?,
-    var legs : String?,
-    var reused : String?,
-    var land_success : String?,
-    var landing_intent : String?,
+    var core_id : String,
+    var flight : Int?,
+    var gridfins : Boolean?,
+    var legs : Boolean?,
+    var reused : Boolean?,
+    var landing_attempt : Boolean?,
+    var landing_success : Boolean?,
     var landing_type : String?,
-    var landing_vehicle : String?
-
-
-) : Serializable {
-    constructor() : this("", "", "", "", "", "", "", "", "", "")
+    var landpad : String?
+) : Serializable{
+    constructor() : this ("", null, null, null, null, null, null, null, null)
 }

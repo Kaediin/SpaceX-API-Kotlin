@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background">
+
+    <ProgressBar
+        android:id="@+id/progress_launch_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:id="@+id/rel_main_launch_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/launch_details_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/launch_details_date"
+                android:layout_below="@+id/launch_details_name"
+                android:layout_width="match_parent"
+                android:text="@string/placeholder"
+                android:textAlignment="center"
+                android:textColor="@color/text_alt"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:id="@+id/lin_launch_details_image_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/launch_details_date"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/launch_details_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/placeholder"
+                    android:textColor="@color/white" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+
+                <ImageView
+                    android:id="@+id/launch_details_mission_patch_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_launch_details_carousel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lin_launch_details_image_header"
+                android:layout_marginTop="5dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/launch_details_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/darker_red"
+                    app:cardCornerRadius="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/launch_details_cardview_carousel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            app:cardCornerRadius="10dp">
+
+                            <com.synnapps.carouselview.CarouselView
+                                android:id="@+id/launch_details_carousel"
+                                android:layout_width="match_parent"
+                                android:layout_height="250dp"
+                                app:fillColor="@color/main_background"
+                                app:pageColor="#00000000"
+                                app:radius="6dp"
+                                app:slideInterval="3000"
+                                app:strokeColor="@color/main_background"
+                                app:strokeWidth="1dp" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/launch_details_active"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/launch_details_cardview_carousel"
+                            android:paddingBottom="12dp"
+                            android:text="@string/placeholder"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

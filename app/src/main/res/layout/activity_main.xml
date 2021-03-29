@@ -1,35 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_main_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/main_background" />
 
-    <TextView
-        android:id="@+id/text_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/progress_horizontal"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/main_text" />
-
-    <ProgressBar
-        android:id="@+id/progress_horizontal"
-        style="?android:attr/progressBarStyleHorizontal"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs_main_home"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:max="100"
-        android:padding="40dp"
-        android:progress="0" />
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:tabMode="fixed" />
 
 
-</RelativeLayout>
+</LinearLayout>

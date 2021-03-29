@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-<!--    <color name="colorPrimary">#000000</color>-->
-    <color name="colorPrimaryDark">#3700B3</color>
-<!--    <color name="colorPrimaryDark">#000000</color>-->
-    <color name="colorAccent">#03DAC5</color>
+<!--    <color name="colorPrimary">#6200EE</color>-->
+    <color name="colorPrimary">#3333ff</color>
+    <color name="colorPrimaryDark">#3333ff</color>
+    <color name="colorAccent">#ffffff</color>
 
     <color name="main_text">#ffffff</color>
     <color name="text_alt">#8D8F97</color>
+    <color name="text_rocket_details">#8D8F97</color>
     <color name="main_background">#2D313D</color>
+    <color name="main_background_dark">#16181d</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
@@ -16,4 +17,9 @@
     <color name="d_green">#00ff00</color>
 
     <color name="button_color">@color/black</color>
+
+    <color name="darker_green">#009933</color>
+    <color name="darker_red">#cc0000</color>
+
+    <color name="container_border_color">#3333ff</color>
 </resources>

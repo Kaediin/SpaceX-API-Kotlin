@@ -6,7 +6,7 @@
     android:background="@color/main_background">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabs_main"
+        android:id="@+id/tabs_main_details"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/colorPrimary"
@@ -14,8 +14,8 @@
         app:tabMode="fixed" />
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager_main"
+        android:id="@+id/viewpager_main_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tabs_main" />
+        android:layout_below="@+id/tabs_main_details" />
 </RelativeLayout>

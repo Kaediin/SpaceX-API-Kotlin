@@ -3,16 +3,16 @@ package com.kaedin.api.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.kaedin.api.fragments.LaunchInfoFragment
-import com.kaedin.api.fragments.RocketFragment
+import com.kaedin.api.fragments.LaunchDetailsFragment
+import com.kaedin.api.fragments.RocketDetailsFragment
 
-class PagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
+class PagerAdapterDetails(fm : FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         return when (position){
-            0 -> LaunchInfoFragment()
+            0 -> LaunchDetailsFragment()
 
-            else -> RocketFragment()
+            else -> RocketDetailsFragment()
         }
     }
 
@@ -22,9 +22,9 @@ class PagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position){
-            0 -> "Launch info"
+            0 -> "Launch"
 
-            else -> "Rocket info"
+            else -> "Rocket"
         }
     }
 }

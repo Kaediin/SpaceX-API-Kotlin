@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rocket_template"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background">
+
+    <ProgressBar
+        android:id="@+id/progress_rocket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rel_rocket_template"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/rocket_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/rocket_wiki_button"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/button_height"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="10dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/wikipedia" />
+
+            <!--            Carousel-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_cardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rocket_wiki_button"
+                app:cardBackgroundColor="#cc0000"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardview_carousel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <com.synnapps.carouselview.CarouselView
+                            android:id="@+id/carouselView"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            app:fillColor="#FFFFFFFF"
+                            app:pageColor="#00000000"
+                            app:radius="6dp"
+                            app:slideInterval="3000"
+                            app:strokeColor="@color/main_background"
+                            app:strokeWidth="1dp" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/rocket_active"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cardview_carousel"
+                        android:paddingBottom="12dp"
+                        android:text="@string/placeholder"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--            Rocket info-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_rocket_properties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame_cardview"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/main_background_dark"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/header_rocker_properties"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="ROCKET"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/header_rocker_properties"
+                        android:layout_margin="10dp"
+                        app:cardBackgroundColor="@color/main_background"
+                        app:cardCornerRadius="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:id="@+id/header_rocket_success_rate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="Rocket success rate"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/rocket_success_rate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="@string/placeholder"
+                                android:textColor="@color/text_rocket_details" />
+
+                            <TextView
+                                android:id="@+id/header_rocket_cost_per_launch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/header_rocket_success_rate"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="Cost per launch"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/rocket_cost_per_launch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rocket_success_rate"
+                                android:layout_alignParentEnd="true"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="@string/placeholder"
+                                android:textColor="@color/text_rocket_details" />
+
+                            <TextView
+                                android:id="@+id/header_rocket_company"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/header_rocket_cost_per_launch"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="Company"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/rocket_company"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rocket_cost_per_launch"
+                                android:layout_alignParentEnd="true"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="@string/placeholder"
+                                android:textColor="@color/text_rocket_details" />
+
+                            <TextView
+                                android:id="@+id/header_rocket_country"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/header_rocket_company"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="Country"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/rocket_country"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rocket_company"
+                                android:layout_alignParentEnd="true"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="@string/placeholder"
+                                android:textColor="@color/text_rocket_details" />
+
+                            <TextView
+                                android:id="@+id/header_rocket_diameter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/header_rocket_country"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="Diameter"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/rocket_diameter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rocket_country"
+                                android:layout_alignParentEnd="true"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="@string/placeholder"
+                                android:textColor="@color/text_rocket_details" />
+
+                            <TextView
+                                android:id="@+id/header_rocket_height"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/header_rocket_diameter"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="Height"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/rocket_height"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rocket_diameter"
+                                android:layout_alignParentEnd="true"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="@string/placeholder"
+                                android:textColor="@color/text_rocket_details" />
+
+                            <TextView
+                                android:id="@+id/header_rocket_mass"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/header_rocket_height"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="Mass"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/rocket_mass"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rocket_height"
+                                android:layout_alignParentEnd="true"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="@string/placeholder"
+                                android:textColor="@color/text_rocket_details" />
+
+                            <TextView
+                                android:id="@+id/header_rocket_boosters"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/header_rocket_mass"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="Boosters"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/rocket_boosters"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rocket_mass"
+                                android:layout_alignParentEnd="true"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="@string/placeholder"
+                                android:textColor="@color/text_rocket_details" />
+
+                            <TextView
+                                android:id="@+id/header_rocket_stages"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/header_rocket_boosters"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="Stages"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/rocket_stages"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rocket_boosters"
+                                android:layout_alignParentEnd="true"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="@string/placeholder"
+                                android:textColor="@color/text_rocket_details" />
+
+                            <TextView
+                                android:id="@+id/header_rocket_first_flight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/header_rocket_stages"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="First flight"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/rocket_first_flight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rocket_stages"
+                                android:layout_alignParentEnd="true"
+                                android:padding="@dimen/first_stage_row_item"
+                                android:text="@string/placeholder"
+                                android:textColor="@color/text_rocket_details" />
+
+                            <RelativeLayout
+                                android:id="@+id/rel_rocket_landing_legs_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/header_rocket_first_flight">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="Number"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/rocket_landing_legs_number"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_rocket_details" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_rocket_landing_legs_material"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_rocket_landing_legs_number">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="Material"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/rocket_landing_legs_material"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_rocket_details" />
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_rocket_landing_legs_material"
+                                android:orientation="vertical">
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    app:cardBackgroundColor="@color/white"
+                                    app:cardCornerRadius="10dp">
+
+                                    <TextView
+                                        android:id="@+id/rocket_first_stage"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:clickable="true"
+                                        android:focusable="true"
+                                        android:padding="@dimen/first_stage_row_item"
+                                        android:text="First stage"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/main_background" />
+
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    app:cardBackgroundColor="@color/white"
+                                    app:cardCornerRadius="10dp">
+
+                                    <TextView
+                                        android:id="@+id/rocket_second_stage"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:clickable="true"
+                                        android:focusable="true"
+                                        android:padding="@dimen/first_stage_row_item"
+                                        android:text="Second stage"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/main_background" />
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--            About-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_rocket_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame_rocket_properties"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/main_background_dark"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/header_rocker_about"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="ABOUT"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_rocket_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/header_rocker_about"
+                        android:layout_margin="10dp"
+                        app:cardBackgroundColor="@color/main_background"
+                        app:cardCornerRadius="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:id="@+id/rocket_about"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/white" />
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--            Engines-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_engines_properties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame_rocket_about"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/main_background_dark"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/header_engines_properties"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="ENGINES"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/header_engines_properties"
+                        android:layout_margin="10dp"
+                        app:cardBackgroundColor="@color/main_background"
+                        app:cardCornerRadius="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp">
+
+                            <RelativeLayout
+                                android:id="@+id/rel_engines_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="Number"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/engines_number"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_rocket_details" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_engines_thrust_sea_level"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_engines_number">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="Thrust sea level"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/engines_thrust_sea_level"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_rocket_details" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_engines_thrust_vacuum"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_engines_thrust_sea_level">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="Thrust vacuum"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/engines_thrust_vacuum"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_rocket_details" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_engines_type"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_engines_thrust_vacuum">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="Type"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/engines_type"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_rocket_details" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_engines_version"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_engines_type">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="Version"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/engines_version"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_rocket_details" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_engines_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_engines_version">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="Layout"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/engines_layout"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_rocket_details" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_engines_engine_loss_max"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_engines_layout">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="Engine loss max"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/engines_engine_loss_max"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_rocket_details" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_engines_propellant_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_engines_engine_loss_max">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="Propellant 1"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/engines_propellant_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_rocket_details" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_engines_propellant_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_engines_propellant_1">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="Propellant 2"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/engines_propellant_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_rocket_details" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_engines_thrust_to_weight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_engines_propellant_2">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="Thrust to weight"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/engines_thrust_to_weight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:padding="@dimen/first_stage_row_item"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_rocket_details" />
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
+
+
+    <!--    <ScrollView-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="fill_parent">-->
+
+    <!--        <RelativeLayout-->
+    <!--            android:id="@+id/rel_layout_rocket"-->
+    <!--            android:layout_width="fill_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:visibility="gone">-->
+
+
+    <!--            <androidx.recyclerview.widget.RecyclerView-->
+    <!--                android:id="@+id/rv_firststage"-->
+    <!--                android:layout_width="fill_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="0dp"-->
+    <!--                android:padding="0dp" />-->
+
+    <!--            <androidx.recyclerview.widget.RecyclerView-->
+    <!--                android:id="@+id/rv_secondstage"-->
+    <!--                android:layout_width="fill_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_below="@+id/rv_firststage"-->
+    <!--                android:layout_margin="0dp"-->
+    <!--                android:layout_marginTop="20dp"-->
+    <!--                android:padding="0dp" />-->
+
+    <!--            <RelativeLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_below="@+id/rv_secondstage"-->
+    <!--                android:padding="20dp">-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/fairing_title"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="@string/fairing"-->
+    <!--                    android:textColor="@color/main_text"-->
+    <!--                    android:textStyle="bold" />-->
+
+    <!--                <View-->
+    <!--                    android:id="@+id/divider_fairing"-->
+    <!--                    android:layout_width="fill_parent"-->
+    <!--                    android:layout_height="1dp"-->
+    <!--                    android:layout_below="@+id/fairing_title"-->
+    <!--                    android:background="@color/white" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/Reused_title"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@+id/divider_fairing"-->
+    <!--                    android:text="@string/reused"-->
+    <!--                    android:textColor="@color/main_text"-->
+    <!--                    android:textStyle="bold" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/reused"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@id/divider_fairing"-->
+    <!--                    android:layout_alignParentEnd="true"-->
+    <!--                    android:paddingEnd="50dp"-->
+    <!--                    android:text="@string/placeholder"-->
+    <!--                    android:textColor="@color/main_text"-->
+    <!--                    android:textStyle="bold" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/recoveryAttempt_title"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@+id/reused"-->
+    <!--                    android:text="@string/recovery_attempted"-->
+    <!--                    android:textColor="@color/main_text"-->
+    <!--                    android:textStyle="bold" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/recoveryAttempt"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@+id/reused"-->
+    <!--                    android:layout_alignParentEnd="true"-->
+    <!--                    android:paddingEnd="50dp"-->
+    <!--                    android:text="@string/placeholder"-->
+    <!--                    android:textColor="@color/main_text"-->
+    <!--                    android:textStyle="bold" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/recovered_title"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@+id/recoveryAttempt"-->
+    <!--                    android:text="@string/recovered"-->
+    <!--                    android:textColor="@color/main_text"-->
+    <!--                    android:textStyle="bold" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/recovered"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@+id/recoveryAttempt"-->
+    <!--                    android:layout_alignParentEnd="true"-->
+    <!--                    android:paddingEnd="50dp"-->
+    <!--                    android:text="@string/placeholder"-->
+    <!--                    android:textColor="@color/main_text"-->
+    <!--                    android:textStyle="bold" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/ship_title"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@+id/recovered"-->
+    <!--                    android:text="@string/ship"-->
+    <!--                    android:textColor="@color/main_text"-->
+    <!--                    android:textStyle="bold" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/ship"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@+id/recovered"-->
+    <!--                    android:layout_alignParentEnd="true"-->
+    <!--                    android:paddingEnd="50dp"-->
+    <!--                    android:text="@string/placeholder"-->
+    <!--                    android:textColor="@color/main_text"-->
+    <!--                    android:textStyle="bold" />-->
+    <!--            </RelativeLayout>-->
+    <!--        </RelativeLayout>-->
+
+    <!--    </ScrollView>-->

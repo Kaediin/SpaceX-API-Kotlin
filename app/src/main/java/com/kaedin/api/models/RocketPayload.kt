@@ -1,6 +1,6 @@
 import java.io.Serializable
 
-data class Payload (
+data class RocketPayload (
     var payload_id : String?,
     var reused : String?,
     var customers : String?,
