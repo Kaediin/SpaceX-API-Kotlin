@@ -3,28 +3,39 @@ package com.kaedin.api.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.kaedin.api.fragments.LaunchesFragment
-import com.kaedin.api.fragments.RocketsFragment
+import com.kaedin.api.fragments.*
 
-class PagerAdapterHome(fm : FragmentManager) : FragmentPagerAdapter(fm) {
+class PagerAdapterHome(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
-        return when (position){
+        return when (position) {
             0 -> LaunchesFragment()
 
-            else -> RocketsFragment()
+            1 -> RocketsFragment()
+
+            2 -> DragonsFragment()
+
+            3 -> LandpadsFragment()
+
+            else -> LaunchpadsFragment()
         }
     }
 
     override fun getCount(): Int {
-        return 2
+        return 5
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return when (position){
+        return when (position) {
             0 -> "Launches"
 
-            else -> "Rockets"
+            1 -> "Rockets"
+
+            2 -> "Dragons"
+
+            3 -> "Landpads"
+
+            else -> "Launchpads"
         }
     }
 }

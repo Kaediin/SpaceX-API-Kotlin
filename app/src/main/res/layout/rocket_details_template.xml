@@ -43,7 +43,7 @@
 
             <!--            Carousel-->
             <androidx.cardview.widget.CardView
-                android:id="@+id/frame_cardview"
+                android:id="@+id/rocket_frame_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rocket_wiki_button"
@@ -56,14 +56,14 @@
 
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardview_carousel"
+                        android:id="@+id/rocket_cardview_carousel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         app:cardCornerRadius="10dp">
 
                         <com.synnapps.carouselview.CarouselView
-                            android:id="@+id/carouselView"
+                            android:id="@+id/rocket_carouselView"
                             android:layout_width="match_parent"
                             android:layout_height="200dp"
                             app:fillColor="#FFFFFFFF"
@@ -79,7 +79,7 @@
                         android:id="@+id/rocket_active"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/cardview_carousel"
+                        android:layout_below="@+id/rocket_cardview_carousel"
                         android:paddingBottom="12dp"
                         android:text="@string/placeholder"
                         android:textAlignment="center"
@@ -95,7 +95,7 @@
                 android:id="@+id/frame_rocket_properties"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/frame_cardview"
+                android:layout_below="@+id/rocket_frame_cardview"
                 android:layout_marginTop="20dp"
                 app:cardBackgroundColor="@color/main_background_dark"
                 app:cardCornerRadius="10dp">

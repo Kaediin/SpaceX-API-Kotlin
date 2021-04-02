@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dragon_heat_shield_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_background"
+        android:padding="20dp">
+
+
+        <RelativeLayout
+            android:id="@+id/rel_dragon_heat_shield_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/first_stage_row_item">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Heat shield"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_dragon_heat_shield_material"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_dragon_heat_shield_header"
+            android:padding="@dimen/first_stage_row_item">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Material"
+                android:textColor="@color/main_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dragon_heat_shield_material"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/placeholder"
+                android:textColor="@color/text_rocket_details"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_dragon_heat_shield_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_dragon_heat_shield_material"
+            android:padding="@dimen/first_stage_row_item">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Size"
+                android:textColor="@color/main_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dragon_heat_shield_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/placeholder"
+                android:textColor="@color/text_rocket_details"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rel_dragon_heat_shield_temp_degrees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_dragon_heat_shield_size"
+            android:padding="@dimen/first_stage_row_item">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temp degrees"
+                android:textColor="@color/main_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dragon_heat_shield_temp_degrees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/placeholder"
+                android:textColor="@color/text_rocket_details"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_dragon_heat_shield_devpartner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_dragon_heat_shield_temp_degrees"
+            android:padding="@dimen/first_stage_row_item">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Development partner"
+                android:textColor="@color/main_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dragon_heat_shield_devpartner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/placeholder"
+                android:textColor="@color/text_rocket_details"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -8,13 +8,14 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.api.R
 import com.kaedin.api.holders.ViewHolder
-import com.kaedin.api.models.Rocket
+import com.kaedin.api.models.Dragon
 import com.kaedin.api.utils.ViewUtils
 import com.kaedin.api.utils.WideViewTemplateType
 import java.util.*
 
-class AdapterRockets(private val context: Context,
-                    private val rockets : ArrayList<Rocket>) :
+class AdapterDragons(private val context: Context,
+                     private val dragons : ArrayList<Dragon>
+) :
     RecyclerView.Adapter<ViewHolder>(){
 
 //    class ViewHolder(val relativeLayout: RelativeLayout) : RecyclerView.ViewHolder(relativeLayout)
@@ -30,11 +31,8 @@ class AdapterRockets(private val context: Context,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val rocket = rockets[position]
-        ViewUtils.setWideViewTemplate(holder, context, rocket.flickr_images, rocket.id, rocket.name!!, WideViewTemplateType.ROCKET)
+        val dragon = dragons[position]
+        ViewUtils.setWideViewTemplate(holder, context, dragon.flickrImages, dragon.id, dragon.name!!, WideViewTemplateType.DRAGON)
     }
-
-    override fun getItemCount() = rockets.size
-
-
+    override fun getItemCount() = dragons.size
 }

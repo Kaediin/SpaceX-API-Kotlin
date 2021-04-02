@@ -6,20 +6,20 @@
     android:padding="10dp">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_rockets"
+        android:id="@+id/rv_landpads"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <TextView
-        android:id="@+id/text_progress_rockets"
+        android:id="@+id/text_progress_landpads"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/progress_horizontal_rockets"
+        android:layout_alignTop="@+id/progress_horizontal_landpads"
         android:layout_centerHorizontal="true"
         android:textColor="@color/main_text" />
 
     <ProgressBar
-        android:id="@+id/progress_horizontal_rockets"
+        android:id="@+id/progress_horizontal_landpads"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

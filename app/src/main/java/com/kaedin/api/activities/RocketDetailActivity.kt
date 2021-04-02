@@ -1,13 +1,12 @@
-package com.kaedin.api
+package com.kaedin.api.activities
 
 import android.os.Bundle
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.kaedin.api.R
 import com.kaedin.api.utils.Create
-import com.kaedin.api.utils.DataUtils
-import kotlinx.android.synthetic.main.first_stage_list_item.view.*
+import com.kaedin.api.utils.ViewUtils
 import kotlinx.android.synthetic.main.rocket_details_template.view.*
-import kotlinx.android.synthetic.main.second_stage_list_item.view.*
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
@@ -35,7 +34,7 @@ class RocketDetailActivity : AppCompatActivity(){
                 val rocket = Create.rocket(launchJSON)
 
                 val rootView = window.decorView.findViewById<RelativeLayout>(R.id.rocket_template)
-                DataUtils.setViewRocketDetails(rootView!!, rocket, this@RocketDetailActivity)
+                ViewUtils.setViewRocketDetails(rootView!!, rocket, this@RocketDetailActivity)
             }
         })
 

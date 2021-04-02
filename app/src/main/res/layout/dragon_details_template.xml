@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dragon_template"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background">
+
+    <ProgressBar
+        android:id="@+id/progress_dragon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rel_dragon_template"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:visibility="gone">
+
+            <!--            Dragon Name-->
+            <TextView
+                android:id="@+id/dragon_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <!--            Dragon type-->
+            <TextView
+                android:id="@+id/dragon_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dragon_name"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:text="@string/placeholder"
+                android:textColor="@color/text_alt"
+                android:textStyle="bold" />
+
+            <!--            Wikipedia button-->
+            <ImageButton
+                android:id="@+id/dragon_wiki_button"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/button_height"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="10dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/wikipedia" />
+
+            <!--            Carousel-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dragon_frame_cardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dragon_type"
+                app:cardBackgroundColor="#cc0000"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/dragon_cardview_carousel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <com.synnapps.carouselview.CarouselView
+                            android:id="@+id/dragon_carouselView"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            app:fillColor="#FFFFFFFF"
+                            app:pageColor="#00000000"
+                            app:radius="6dp"
+                            app:slideInterval="3000"
+                            app:strokeColor="@color/main_background"
+                            app:strokeWidth="1dp" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/dragon_active"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dragon_cardview_carousel"
+                        android:paddingBottom="12dp"
+                        android:text="@string/placeholder"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--            About-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_dragon_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dragon_frame_cardview"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/main_background_dark"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/header_dragon_about"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="ABOUT"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_dragon_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/header_dragon_about"
+                        android:layout_margin="10dp"
+                        app:cardBackgroundColor="@color/main_background"
+                        app:cardCornerRadius="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:id="@+id/dragon_about"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/white" />
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--            Dragon properties-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_dragon_properties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame_dragon_about"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/main_background_dark"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/header_dragon_properties"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="PROPERTIES"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_dragon_properties"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/header_dragon_properties"
+                        android:layout_margin="10dp"
+                        app:cardBackgroundColor="@color/main_background"
+                        app:cardCornerRadius="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/card_dragon_heat_shield"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                app:cardCornerRadius="10dp">
+
+                                <TextView
+                                    android:id="@+id/dragon_heat_shield_textview"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="5dp"
+                                    android:text="Heat Shield"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/black" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/card_dragon_trunk"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/card_dragon_heat_shield"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="5dp"
+                                app:cardCornerRadius="10dp">
+
+                                <TextView
+                                    android:id="@+id/dragon_trunk_textview"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="5dp"
+                                    android:text="Trunk"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/black" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_dragon_launch_payload_mass"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/card_dragon_trunk"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Launch payload mass"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/dragon_launch_payload_mass"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_dragon_launch_payload_vol"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_dragon_launch_payload_mass"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Launch payload volume"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/dragon_launch_payload_vol"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_dragon_return_payload_mass"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_dragon_launch_payload_vol"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Return payload mass"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/dragon_return_payload_mass"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_dragon_return_payload_vol"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_dragon_return_payload_mass"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Return payload volume"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/dragon_return_payload_vol"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_dragon_height_w_trunk"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_dragon_return_payload_vol"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Height (with trunk)"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/dragon_height_w_trunk"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_dragon_diameter"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_dragon_height_w_trunk"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Diameter"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/dragon_diameter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_dragon_first_flight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_dragon_diameter"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="First flight"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/dragon_first_flight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_dragon_crew_capacity"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_dragon_first_flight"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Crew capacity"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/dragon_crew_capacity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_dragon_orbit_duration_yr"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_dragon_crew_capacity"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Orbit duration (years)"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/dragon_orbit_duration_yr"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

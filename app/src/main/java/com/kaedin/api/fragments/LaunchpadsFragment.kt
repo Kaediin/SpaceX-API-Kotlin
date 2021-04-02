@@ -7,27 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.api.R
-import com.kaedin.api.adapters.AdapterRockets
-import com.kaedin.api.asynctasks.RocketsRequests
-import com.kaedin.api.models.Rocket
-import kotlinx.android.synthetic.main.activity_launches.*
-import kotlinx.android.synthetic.main.activity_launches.progress_horizontal2
-import kotlinx.android.synthetic.main.activity_launches.view.*
+import com.kaedin.api.adapters.AdapterLandLaunchpads
+import com.kaedin.api.asynctasks.LaunchpadsRequests
+import com.kaedin.api.models.Launchpad
+import kotlinx.android.synthetic.main.activity_landpads.*
+import kotlinx.android.synthetic.main.activity_landpads.view.*
 import kotlinx.android.synthetic.main.activity_rockets.*
 import kotlinx.android.synthetic.main.activity_rockets.view.*
 import okhttp3.*
-import org.json.JSONArray
 import java.io.IOException
 
-class RocketsFragment : Fragment() {
+class LaunchpadsFragment : Fragment()  {
 
     private val client = OkHttpClient()
     private lateinit var adapter: RecyclerView.Adapter<*>
-    var rockets = ArrayList<Rocket>()
+    var launchpads = ArrayList<Launchpad>()
     private lateinit var mView : View
 
     override fun onCreateView(
@@ -35,14 +32,14 @@ class RocketsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.activity_rockets, container, false)
-        run()
+        val view = inflater.inflate(R.layout.activity_landpads, container, false)
         mView = view
+        run()
         return mView
     }
 
     private fun run() {
-        val url = "https://api.spacexdata.com/v4/rockets"
+        val url = "https://api.spacexdata.com/v4/launchpads"
         val request = Request.Builder()
             .url(url)
             .build()
@@ -51,22 +48,22 @@ class RocketsFragment : Fragment() {
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                progress_horizontal_rockets.visibility = View.GONE
+                progress_horizontal_landpads.visibility = View.GONE
             }
             override fun onResponse(call: Call, response: Response) {
-                RocketsRequests(this@RocketsFragment, null, null).execute(JSONArray(response.body()!!.string()))
+                LaunchpadsRequests(this@LaunchpadsFragment).execute(response)
             }
         })
     }
 
     fun display() {
         Handler(Looper.getMainLooper()).post {
-            val recyclerView = mView.findViewById<RecyclerView>(R.id.rv_rockets)
+            val recyclerView = mView.findViewById<RecyclerView>(R.id.rv_landpads)
             val columnNumbers = 2
             recyclerView.layoutManager = LinearLayoutManager(context)
-            adapter = AdapterRockets(context!!, rockets)
-            mView.text_progress_rockets.visibility = View.GONE
-            mView.progress_horizontal_rockets.visibility = View.GONE
+            adapter = AdapterLandLaunchpads(context!!, launchpads)
+            mView.text_progress_landpads.visibility = View.GONE
+            mView.progress_horizontal_landpads.visibility = View.GONE
             recyclerView.adapter = adapter
             adapter.notifyDataSetChanged()
         }
@@ -74,10 +71,10 @@ class RocketsFragment : Fragment() {
 
     fun updateProgressBar(progress: Int, text: String, limit: Int?) {
         Handler(Looper.getMainLooper()).post {
-            mView.text_progress_rockets.text = text
-            mView.progress_horizontal_rockets.progress = progress
+            mView.text_progress_landpads.text = text
+            mView.progress_horizontal_landpads.progress = progress
             if (limit != null) {
-                mView.progress_horizontal_rockets.max = limit
+                mView.progress_horizontal_landpads.max = limit
             }
         }
     }

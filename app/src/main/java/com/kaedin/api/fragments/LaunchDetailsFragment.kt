@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.kaedin.api.R
 import com.kaedin.api.utils.Create
 import com.kaedin.api.utils.DataUtils
+import com.kaedin.api.utils.ViewUtils
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
@@ -26,7 +27,7 @@ class LaunchDetailsFragment : Fragment() {
     }
 
     private fun display(view: View) {
-        val id = activity!!.intent.extras!!.getString("launch", "")
+        val id = activity!!.intent.extras!!.getString("launch_id", "")
 
         val client = OkHttpClient()
         val url = "https://api.spacexdata.com/v4/launches/$id"
@@ -39,32 +40,9 @@ class LaunchDetailsFragment : Fragment() {
             override fun onResponse(call: Call, response: Response) {
 
                 val launchJSON = JSONObject(response.body()!!.string())
-                val launch = Create.launchFull(launchJSON)
+                val launch = Create.launch(launchJSON)
 
-                /*println(launch.id)
-                println(launch.name)
-                println(launch.flight_number)
-                println(launch.rocket_id)
-                println(launch.upcoming)
-                println(launch.date_unix)
-                println(launch.details)
-                println(launch.links)
-                println(launch.fairings)
-                println(launch.tbd)
-                println(launch.net)
-                println(launch.window)
-                println(launch.success)
-                println(launch.crew_ids)
-                println(launch.ship_ids)
-                println(launch.capsule_ids)
-                println(launch.payload_ids)
-                println(launch.launchpad_id)
-                println(launch.auto_update)
-                println(launch.launch_library_id)
-                println(launch.failures)
-                println(launch.cores)*/
-
-                DataUtils.setViewLaunchDetails(view, launch, context!!)
+                ViewUtils.setViewLaunchDetails(view, launch, context!!)
 
             }
         })

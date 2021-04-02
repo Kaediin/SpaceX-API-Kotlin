@@ -12,15 +12,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kaedin.api.models.Launch
 import com.google.android.material.snackbar.Snackbar
-import com.kaedin.api.DetailActivity
+import com.kaedin.api.activities.LaunchDetailActivity
 import com.kaedin.api.R
 import com.kaedin.api.utils.DataUtils
 import kotlinx.android.synthetic.main.launch_list_item.view.*
 import java.util.ArrayList
 
-class AdapterLaunches(private val context: Context,
-                      private val launches : ArrayList<Launch>) :
-    RecyclerView.Adapter<AdapterLaunches.ViewHolder>(){
+class AdapterLaunches(
+    private val context: Context,
+    private val launches: ArrayList<Launch>
+) :
+    RecyclerView.Adapter<AdapterLaunches.ViewHolder>() {
 
     class ViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView)
 
@@ -43,25 +45,27 @@ class AdapterLaunches(private val context: Context,
         val rocketId = launches[position].rocket_id
         val details = launches[position].details
         val mission = launches[position].name
-        val missionsPatchUrl : String? = launches[position].links?.mission_patch_small
+        val missionsPatchUrl: String? = launches[position].links?.mission_patch_small
         val upcoming = launches[position].upcoming
         val date = launches[position].date_unix
 
-        holder.cardView.flight_details.text = Html.fromHtml(details!!.substring(0, details.length.coerceAtMost(125)) +"... <br><b>[Read more!]</b>")
+        holder.cardView.flight_details.text = details
+
         holder.cardView.flight_details.setTextColor(Color.WHITE)
 
-        if(upcoming!!){
-            if (details == "null"){
+        if (upcoming!!) {
+            if (details == "null") {
                 holder.cardView.flight_details.setTextColor(Color.RED)
                 holder.cardView.flight_details.text = context.resources.getString(R.string.upcoming)
             }
         } else {
-            if (details == "null"){
-                holder.cardView.flight_details.text = context.resources.getString(R.string.no_deatils_available)
+            if (details == "null") {
+                holder.cardView.flight_details.text =
+                    context.resources.getString(R.string.no_deatils_available)
             }
         }
 
-        if (missionsPatchUrl != null && missionsPatchUrl != "null"){
+        if (missionsPatchUrl != null && missionsPatchUrl != "null") {
             Glide.with(context)
                 .load(missionsPatchUrl)
                 .into(holder.cardView.pattern)
@@ -73,11 +77,14 @@ class AdapterLaunches(private val context: Context,
         holder.cardView.date_launch.text = DataUtils.getDateTime(date.toString())
         holder.cardView.flight_number.text = "Flight: ${launches[position].flight_number}"
 
+
         holder.cardView.list_item.setOnClickListener {
             if (!upcoming) {
-                val intent = Intent(context, DetailActivity::class.java)
-                intent.putExtra("launch", id)
+                val intent = Intent(context, LaunchDetailActivity::class.java)
+                intent.putExtra("launch_id", id)
                 intent.putExtra("rocket_id", rocketId)
+                intent.putExtra("landpad_id", rocketId)
+                intent.putExtra("launchpad_id", launches[position].launchpad_id)
                 context.startActivity(intent)
             } else {
                 Snackbar.make(
@@ -87,6 +94,9 @@ class AdapterLaunches(private val context: Context,
                 ).show()
             }
         }
+
+        val leftoverSpace = 6 - holder.cardView.mission_name.lineCount
+        holder.cardView.flight_details.maxLines = leftoverSpace
     }
 
     override fun getItemCount() = launches.size

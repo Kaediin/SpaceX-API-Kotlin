@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_launches.*
 import kotlinx.android.synthetic.main.activity_launches.view.*
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
+import org.json.JSONArray
 import java.io.IOException
 
 
@@ -49,7 +50,7 @@ class LaunchesFragment : Fragment() {
                 progress_horizontal2.visibility = View.GONE
             }
             override fun onResponse(call: Call, response: Response) {
-                LaunchesRequests(this@LaunchesFragment, view).execute(response)
+                LaunchesRequests(this@LaunchesFragment, null, view, null).execute(JSONArray(response.body()!!.string()))
             }
         })
 

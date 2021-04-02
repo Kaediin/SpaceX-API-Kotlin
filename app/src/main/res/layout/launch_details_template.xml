@@ -19,6 +19,7 @@
         <RelativeLayout
             android:id="@+id/rel_main_launch_details"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content">
 
 
@@ -34,12 +35,12 @@
 
             <TextView
                 android:id="@+id/launch_details_date"
-                android:layout_below="@+id/launch_details_name"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/launch_details_name"
                 android:text="@string/placeholder"
                 android:textAlignment="center"
-                android:textColor="@color/text_alt"
-                android:layout_height="wrap_content"/>
+                android:textColor="@color/text_alt" />
 
             <LinearLayout
                 android:id="@+id/lin_launch_details_image_header"
@@ -49,13 +50,27 @@
                 android:orientation="horizontal"
                 android:padding="5dp">
 
-                <TextView
-                    android:id="@+id/launch_details_details"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/placeholder"
-                    android:textColor="@color/white" />
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/launch_details_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/placeholder"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/launch_details_readmore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/launch_details_details"
+                        android:text="@string/click_here_to_read_more"
+                        android:textColor="@color/text_alt"
+                        android:visibility="gone" />
+                </RelativeLayout>
 
                 <View
                     android:layout_width="20dp"
@@ -122,9 +137,97 @@
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
+
+
             </RelativeLayout>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_launch_socials"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rel_launch_details_carousel"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/main_background_dark"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/launch_details_socials"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="SOCIAL LINKS"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/launch_details_socials"
+                        android:layout_margin="10dp"
+                        app:cardBackgroundColor="@color/main_background"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageButton
+                                android:id="@+id/socials_wikipedia"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/main_background_dark"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/wikipedia" />
+
+                            <ImageButton
+                                android:id="@+id/socials_reddit"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/main_background_dark"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/reddit" />
+
+                            <ImageButton
+                                android:id="@+id/socials_news"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/main_background_dark"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/news" />
+
+                            <ImageButton
+                                android:id="@+id/socials_youtube"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/main_background_dark"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/youtube" />
+
+                            <ImageButton
+                                android:id="@+id/socials_spacex"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/main_background_dark"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/spacex_logo" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
     </ScrollView>
-
 </RelativeLayout>

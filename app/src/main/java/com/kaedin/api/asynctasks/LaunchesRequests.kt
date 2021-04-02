@@ -6,27 +6,36 @@ import com.kaedin.api.utils.Create
 import com.kaedin.api.fragments.LaunchesFragment
 import com.kaedin.api.models.Launch
 import com.kaedin.api.utils.DataUtils
-import okhttp3.Response
+import com.kaedin.api.utils.ViewUtils
 import org.json.JSONArray
+import org.json.JSONObject
+import java.lang.Exception
 
-class LaunchesRequests(private var activity: LaunchesFragment,
-                       private var view: View
-) : AsyncTask<Response, String, ArrayList<Launch>>() {
+class LaunchesRequests(
+    private var activityLaunches: LaunchesFragment?,
+    private var activityViewUtils: ViewUtils?,
+    private var view: View,
+    private var isLandpad: Boolean?
+) : AsyncTask<JSONArray, String, ArrayList<Launch>>() {
 
     override fun onPreExecute() {
         super.onPreExecute()
         println("onPreExecute called")
-        activity.updateProgressBar(view, 0, "Fetching data from SpaceX", null)
+        activityLaunches?.updateProgressBar(view, 0, "Fetching data from SpaceX", null)
     }
 
-    override fun doInBackground(vararg params: Response?): ArrayList<Launch> {
+    override fun doInBackground(vararg params: JSONArray?): ArrayList<Launch> {
         println("doInBackground called")
-        val jsonArray = JSONArray(params[0]!!.body()!!.string())
+        val jsonArray = params[0]!!
         val launches = ArrayList<Launch>()
 
         for (i in 0 until jsonArray.length()) {
             // JSON vars
-            val json = jsonArray.getJSONObject(i)
+            val json = try {
+                jsonArray.getJSONObject(i)
+            } catch (e: Exception) {
+                JSONObject(jsonArray[i].toString())
+            }
 
             val launch = Create.launchTile(json)
             publishProgress(
@@ -34,8 +43,10 @@ class LaunchesRequests(private var activity: LaunchesFragment,
                 "Gathering info for flight: $i/${jsonArray.length()}",
                 jsonArray.length().toString()
             )
+            if (launch.upcoming == false) {
+                launches.add(launch)
+            }
 
-            launches.add(launch)
 
         }
 
@@ -45,15 +56,26 @@ class LaunchesRequests(private var activity: LaunchesFragment,
     override fun onPostExecute(result: ArrayList<Launch>?) {
         super.onPostExecute(result)
         println("On Post Execute")
-        val n_result = DataUtils.sortOldestToNewest(result!!, true)
-//        Provider.allLaunches = n_result
-        activity.currentLaunches = n_result
-//        activity.currentLaunches = DataUtils.filterFirstLoad(filter)
-        activity.display(view)
+        val resultsSorted = DataUtils.sortOldestToNewest(result!!, true)
+
+        if (isLandpad != null) {
+            if (isLandpad!!) {
+                activityViewUtils?.displayLaunchesLandpad(view, view.context, resultsSorted)
+            } else {
+                activityViewUtils?.displayLaunchesLaunchpad(view, view.context, resultsSorted)
+            }
+        } else {
+            activityLaunches?.currentLaunches = resultsSorted
+            activityLaunches?.display(view)
+        }
     }
 
     override fun onProgressUpdate(vararg values: String?) {
-        activity.updateProgressBar(view, values[0]!!.toInt(), values[1]!!, values[2]?.toInt())
-
+        activityLaunches?.updateProgressBar(
+            view,
+            values[0]!!.toInt(),
+            values[1]!!,
+            values[2]?.toInt()
+        )
     }
 }
