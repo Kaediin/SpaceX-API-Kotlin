@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/capsule_template"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background">
+
+    <ProgressBar
+        android:id="@+id/progress_capsule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rel_capsule_template"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:visibility="visible">
+
+
+            <!--            capsule Name-->
+            <RelativeLayout
+                android:id="@+id/rel_capsule_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/capsule_details_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/placeholder"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/capsule_details_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/capsule_details_name"
+                    android:text="@string/placeholder"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+
+            <!--            capsule properties-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_capsule_properties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rel_capsule_header"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/main_background_dark"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/header_capsule_properties"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="PROPERTIES"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_capsule_properties"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/header_capsule_properties"
+                        android:layout_margin="10dp"
+                        app:cardBackgroundColor="@color/main_background"
+                        app:cardCornerRadius="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp">
+
+                            <RelativeLayout
+                                android:id="@+id/rel_capsule_status"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Status"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/capsule_details_status"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_capsule_reuse_count"
+                                android:layout_width="match_parent"
+                                android:layout_below="@+id/rel_capsule_status"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Reuse count"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/capsule_details_reuse_count"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_capsule_water_landings"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_capsule_reuse_count"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Water landings"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/capsule_details_water_landings"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_capsule_land_landings"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_capsule_water_landings"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Land landings"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/capsule_details_land_landings"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_capsule_last_update"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_capsule_land_landings"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Last update"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/capsule_details_last_update"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_capsule_serial"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_capsule_last_update"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Serial"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/capsule_details_serial"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--                        Launches-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_capsule_launches"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame_capsule_properties"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/main_background_dark"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/header_capsule_launches"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="MISSIONS"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_capsule_launches"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/header_capsule_launches"
+                        android:background="@color/main_background_dark" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

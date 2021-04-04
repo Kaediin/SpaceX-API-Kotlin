@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/launchpad_template"
+    android:id="@+id/payload_template"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background">
 
     <ProgressBar
-        android:id="@+id/progress_launchpad"
+        android:id="@+id/progress_payload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
@@ -17,79 +17,37 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/rel_launchpad_template"
+            android:id="@+id/rel_payload_template"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
             android:visibility="gone">
 
-            <LinearLayout
-                android:id="@+id/lin_launchpad_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <!--            launchpad Name-->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/launchpad_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/placeholder"
-                        android:textColor="@color/white"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <!--            Wikipedia button-->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5">
-
-                    <ImageButton
-                        android:id="@+id/launchpad_wiki_button"
-                        android:layout_width="@dimen/button_width"
-                        android:layout_height="@dimen/button_height"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginBottom="10dp"
-                        android:adjustViewBounds="true"
-                        android:background="@drawable/wikipedia" />
-                </RelativeLayout>
-
-
-            </LinearLayout>
-
-            <!--            Map-->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/frame_launchpad_map"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_below="@+id/lin_launchpad_header"
-                android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@color/main_background_dark"
-                app:cardCornerRadius="10dp">
-
-                <fragment xmlns:tools="http://schemas.android.com/tools"
-                    android:id="@+id/launchpad_details_map"
-                    android:name="com.google.android.gms.maps.SupportMapFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:context=".activities.launchpadDetailActivity" />
-
-
-            </androidx.cardview.widget.CardView>
-
-            <!--            About-->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/frame_launchpad_about"
+            <TextView
+                android:id="@+id/payload_details_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/frame_launchpad_map"
+                android:text="@string/placeholder"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/payload_details_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/payload_details_name"
+                android:text="@string/placeholder"
+                android:textAlignment="center"
+                android:textColor="@color/text_alt"
+                android:textSize="16sp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_payload_mission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/payload_details_type"
                 android:layout_marginTop="20dp"
                 app:cardBackgroundColor="@color/main_background_dark"
                 app:cardCornerRadius="10dp">
@@ -99,57 +57,38 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/header_launchpad_about"
+                        android:id="@+id/header_payload_mission"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingTop="8dp"
-                        android:text="ABOUT"
+                        android:text="MISSION"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_launchpad_details"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/header_launchpad_about"
-                        android:layout_margin="10dp"
+                        android:layout_below="@+id/header_payload_mission"
                         app:cardBackgroundColor="@color/main_background"
                         app:cardCornerRadius="10dp">
 
-                        <RelativeLayout
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_payload_launch"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:padding="10dp">
+                            android:background="@color/main_background_dark" />
 
-                            <TextView
-                                android:id="@+id/launchpad_about"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:textColor="@color/white" />
-
-                            <TextView
-                                android:id="@+id/launchpad_details_readmore"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/launchpad_about"
-                                android:text="@string/click_here_to_read_more"
-                                android:textAlignment="center"
-                                android:textColor="@color/text_alt"
-                                android:visibility="gone" />
-
-                        </RelativeLayout>
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!--            launchpad properties-->
             <androidx.cardview.widget.CardView
-                android:id="@+id/frame_launchpad_properties"
+                android:id="@+id/frame_payload_properties"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/frame_launchpad_about"
+                android:layout_below="@+id/frame_payload_mission"
                 android:layout_marginTop="20dp"
                 app:cardBackgroundColor="@color/main_background_dark"
                 app:cardCornerRadius="10dp">
@@ -159,32 +98,31 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/header_launchpad_properties"
+                        android:id="@+id/header_payload_properties"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingTop="8dp"
-                        android:text="PROPERTIES"
+                        android:text="PAYLOAD"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_launchpad_properties"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/header_launchpad_properties"
+                        android:layout_below="@+id/header_payload_properties"
                         android:layout_margin="10dp"
                         app:cardBackgroundColor="@color/main_background"
                         app:cardCornerRadius="10dp">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:padding="10dp">
 
                             <RelativeLayout
-                                android:id="@+id/rel_launchpad_status"
+                                android:id="@+id/rel_payload_reused"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="@dimen/first_stage_row_item">
@@ -192,150 +130,104 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Status"
+                                    android:text="Reused"
                                     android:textColor="@color/white" />
 
-                                <TextView
-                                    android:id="@+id/launchpad_properties_status"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                <ImageView
+                                    android:id="@+id/payload_details_reused"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
                                     android:layout_alignParentEnd="true"
-                                    android:text="@string/placeholder"
-                                    android:textColor="@color/text_alt" />
-
+                                    android:src="@drawable/ic_questionmark" />
                             </RelativeLayout>
 
                             <RelativeLayout
-                                android:id="@+id/rel_launchpad_name"
+                                android:id="@+id/rel_payload_customers"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/rel_launchpad_status"
+                                android:layout_below="@+id/rel_payload_reused"
                                 android:padding="@dimen/first_stage_row_item">
 
                                 <TextView
+                                    android:id="@+id/customers_header"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Name"
+                                    android:text="Customers"
                                     android:textColor="@color/white" />
 
                                 <TextView
-                                    android:id="@+id/launchpad_properties_name"
-                                    android:layout_width="wrap_content"
+                                    android:id="@+id/payload_details_customers"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
+                                    android:layout_toEndOf="@+id/customers_header"
                                     android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
                                     android:textColor="@color/text_alt" />
-
-                            </RelativeLayout>
-
-
-                            <RelativeLayout
-                                android:id="@+id/rel_launchpad_locality"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/rel_launchpad_name"
-                                android:padding="@dimen/first_stage_row_item">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Locality"
-                                    android:textColor="@color/white" />
-
-                                <TextView
-                                    android:id="@+id/launchpad_properties_locality"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:text="@string/placeholder"
-                                    android:textColor="@color/text_alt" />
-
                             </RelativeLayout>
 
                             <RelativeLayout
-                                android:id="@+id/rel_launchpad_region"
+                                android:id="@+id/rel_payload_nationalities"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/rel_launchpad_locality"
+                                android:layout_below="@+id/rel_payload_customers"
                                 android:padding="@dimen/first_stage_row_item">
 
                                 <TextView
+                                    android:id="@+id/nationalities_header"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Region"
+                                    android:text="Nationalities"
                                     android:textColor="@color/white" />
 
                                 <TextView
-                                    android:id="@+id/launchpad_properties_region"
-                                    android:layout_width="wrap_content"
+                                    android:id="@+id/payload_details_nationalities"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
+                                    android:layout_toEndOf="@+id/nationalities_header"
                                     android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
                                     android:textColor="@color/text_alt" />
-
                             </RelativeLayout>
 
                             <RelativeLayout
-                                android:id="@+id/rel_launchpad_landing_attempts"
+                                android:id="@+id/rel_payload_manufacturers"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/rel_launchpad_region"
+                                android:layout_below="@+id/rel_payload_nationalities"
                                 android:padding="@dimen/first_stage_row_item">
 
                                 <TextView
+                                    android:id="@+id/manufacturers_header"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Landing attempts"
+                                    android:text="Manufacturers"
                                     android:textColor="@color/white" />
 
                                 <TextView
-                                    android:id="@+id/launchpad_properties_landing_attempts"
-                                    android:layout_width="wrap_content"
+                                    android:id="@+id/payload_details_manufacturers"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
+                                    android:layout_toEndOf="@+id/manufacturers_header"
                                     android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
                                     android:textColor="@color/text_alt" />
-
                             </RelativeLayout>
 
                             <RelativeLayout
-                                android:id="@+id/rel_launchpad_landing_successes"
+                                android:id="@+id/rel_payload_mass_kg"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/rel_launchpad_landing_attempts"
+                                android:layout_below="@+id/rel_payload_manufacturers"
                                 android:padding="@dimen/first_stage_row_item">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Landing successes"
+                                    android:text="Mass"
                                     android:textColor="@color/white" />
 
                                 <TextView
-                                    android:id="@+id/launchpad_properties_landing_successes"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:text="@string/placeholder"
-                                    android:textColor="@color/text_alt" />
-
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:id="@+id/rel_launchpad_latitude"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/rel_launchpad_landing_successes"
-                                android:padding="@dimen/first_stage_row_item">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Latitude"
-                                    android:textColor="@color/white" />
-
-                                <TextView
-                                    android:id="@+id/launchpad_properties_latitude"
+                                    android:id="@+id/payload_details_mass_kg"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentEnd="true"
@@ -344,107 +236,167 @@
                             </RelativeLayout>
 
                             <RelativeLayout
-                                android:id="@+id/rel_launchpad_longitude"
+                                android:id="@+id/rel_payload_orbit"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/rel_launchpad_latitude"
+                                android:layout_below="@+id/rel_payload_mass_kg"
                                 android:padding="@dimen/first_stage_row_item">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Longitude"
+                                    android:text="Orbit"
                                     android:textColor="@color/white" />
 
                                 <TextView
-                                    android:id="@+id/launchpad_properties_longitude"
+                                    android:id="@+id/payload_details_orbit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentEnd="true"
                                     android:text="@string/placeholder"
                                     android:textColor="@color/text_alt" />
-
                             </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_payload_reference_system"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_payload_orbit"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Reference system"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/payload_details_reference_system"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_payload_regime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_payload_reference_system"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Regime"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/payload_details_regime"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_payload_semi_major_axis_km"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_payload_regime"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Semi major axis"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/payload_details_semi_major_axis_km"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_payload_eccentricity"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_payload_semi_major_axis_km"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Eccentricity"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/payload_details_eccentricity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_payload_lifespan_years"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_payload_eccentricity"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Lifespan"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/payload_details_lifespan_years"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_payload_epoch"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_payload_lifespan_years"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Epoch"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/payload_details_epoch"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@string/placeholder"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
                         </RelativeLayout>
+
                     </androidx.cardview.widget.CardView>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!--                        Rockets-->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/frame_launchpad_rockets"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/frame_launchpad_properties"
-                android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@color/main_background_dark"
-                app:cardCornerRadius="10dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/header_launchpad_rockets"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
-                        android:text="ROCKETS"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_launchpad_rockets"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/header_launchpad_rockets"
-                        android:background="@color/main_background_dark" />
-
-                    <!--                        </RelativeLayout>-->
-                    <!--                    </androidx.cardview.widget.CardView>-->
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!--                        Launches-->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/frame_launchpad_launches"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/frame_launchpad_rockets"
-                android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@color/main_background_dark"
-                app:cardCornerRadius="10dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/header_launchpad_launches"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
-                        android:text="MISSIONS"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_launchpad_launches"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/header_launchpad_launches"
-                        android:background="@color/main_background_dark" />
-
-                    <!--                        </RelativeLayout>-->
-                    <!--                    </androidx.cardview.widget.CardView>-->
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
 
         </RelativeLayout>
     </ScrollView>
+
 </RelativeLayout>

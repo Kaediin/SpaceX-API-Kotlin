@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kaedin.api">
+    package="com.kaedin.spacex">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -16,7 +16,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB_JgUesNl-cptDZSdIUxDOOIId5yMUYik" />
 
-        <activity android:name="com.kaedin.api.activities.MainActivity"
+        <activity
+            android:name="com.kaedin.spacex.activities.MainActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +26,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.RocketDetailActivity"
+        <activity
+            android:name="com.kaedin.spacex.activities.RocketDetailActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +36,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.DragonDetailActivity"
+        <activity
+            android:name="com.kaedin.spacex.activities.DragonDetailActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +46,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.LandpadDetailActivity"
+        <activity
+            android:name="com.kaedin.spacex.activities.LandpadDetailActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,7 +56,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.LaunchpadDetailActivity"
+        <activity
+            android:name="com.kaedin.spacex.activities.LaunchpadDetailActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,13 +66,52 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.kaedin.api.activities.LaunchDetailActivity"
+        <activity
+            android:name=".activities.PayloadDetailActivity"
+            android:configChanges="orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.ShipDetailActivity"
+            android:configChanges="orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.CapsuleDetailActivity"
+            android:configChanges="orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.CoreDetailActivity"
+            android:configChanges="orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.kaedin.spacex.activities.LaunchDetailActivity"
 
             android:configChanges="orientation|screenSize">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

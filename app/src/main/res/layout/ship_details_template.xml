@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ship_template"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background">
+
+    <ProgressBar
+        android:id="@+id/progress_ship"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rel_ship_template"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/lin_ship_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--            ship Name-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+
+                    <TextView
+                        android:id="@+id/ship_details_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/placeholder"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/ship_details_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ship_details_name"
+                        android:text="@string/placeholder"
+                        android:textColor="@color/white" />
+
+                </RelativeLayout>
+
+                <!--            Wikipedia button-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4">
+
+                    <ImageButton
+                        android:id="@+id/ship_marinetraffic_button"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginBottom="10dp"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/marinetraffic" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <!--            Map-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_ship_map"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/lin_ship_header"
+                app:cardBackgroundColor="@color/main_background_dark"
+                app:cardCornerRadius="10dp">
+
+                <fragment xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/ship_details_map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:context=".activities.shipDetailActivity" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <!--            ship properties-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_ship_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame_ship_map"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/main_background_dark"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_ship_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        app:cardBackgroundColor="@color/main_background"
+                        app:cardCornerRadius="10dp">
+
+                        <ImageView
+                            android:id="@+id/ship_details_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/header_ship_active"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/card_ship_status"
+                        android:paddingBottom="8dp"
+                        android:text="SHIP STATUS"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <!--            ship properties-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_ship_properties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame_ship_status"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/main_background_dark"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/header_ship_properties"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="PROPERTIES"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_ship_properties"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/header_ship_properties"
+                        android:layout_margin="10dp"
+                        app:cardBackgroundColor="@color/main_background"
+                        app:cardCornerRadius="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp">
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_model"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Model"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_model"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_roles"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_model"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:id="@+id/roles_header"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Roles"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_roles"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/roles_header"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_imo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_roles"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="IMO"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_imo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_mmsi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_imo"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="MMSI"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_mmsi"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_abs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_mmsi"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="ABS"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_abs"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_class"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_abs"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Class"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_class"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_mass"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_class"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Mass"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_mass"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_buildyear"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_mass"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Build year"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_buildyear"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_homeport"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_buildyear"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Home port"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_homeport"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_status"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_homeport"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Status"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_status"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_speed"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_status"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Speed"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_speed"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_latitude"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_speed"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Latitude"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_latitude"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_longitude"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_latitude"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Longitude"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_longitude"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rel_ship_ais"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rel_ship_longitude"
+                                android:padding="@dimen/first_stage_row_item">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Last AIS update"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/ship_details_ais"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/placeholder"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/text_alt" />
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--                        Launches-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frame_ship_launches"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame_ship_properties"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/main_background_dark"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/header_ship_launches"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="MISSIONS"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_ship_launches"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/header_ship_launches"
+                        android:background="@color/main_background_dark" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
