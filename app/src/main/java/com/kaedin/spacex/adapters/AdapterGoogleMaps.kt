@@ -12,7 +12,7 @@ import java.lang.Exception
 import kotlin.collections.ArrayList
 
 
-class AdapterLandLaunchpads(
+class AdapterGoogleMaps(
     private val context: Context,
     private val landLaunchdPads: ArrayList<*>
 ) :

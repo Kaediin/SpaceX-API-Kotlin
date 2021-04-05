@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.spacex.R
-import com.kaedin.spacex.adapters.AdapterLaunches
+import com.kaedin.spacex.adapters.AdapterMainViews
+//import com.kaedin.spacex.adapters.AdapterLaunches
 import com.kaedin.spacex.asynctasks.LaunchesRequests
 import com.kaedin.spacex.models.Launch
+import com.kaedin.spacex.utils.SpaceXObject
 import kotlinx.android.synthetic.main.activity_launches.*
 import kotlinx.android.synthetic.main.activity_launches.view.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -60,7 +62,7 @@ class LaunchesFragment : Fragment() {
         Handler(Looper.getMainLooper()).post {
             val recyclerView = view.findViewById<RecyclerView>(R.id.rv_launches)
             recyclerView.layoutManager = LinearLayoutManager(context!!)
-            adapter = AdapterLaunches(context!!, currentLaunches)
+            adapter = AdapterMainViews(context!!, currentLaunches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
             recyclerView.adapter = adapter
             view.text_progress2.visibility = View.GONE
             view.progress_horizontal2.visibility = View.GONE

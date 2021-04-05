@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.spacex.R
-import com.kaedin.spacex.adapters.AdapterDragons
+import com.kaedin.spacex.adapters.AdapterMainViews
+//import com.kaedin.spacex.adapters.AdapterDragons
 import com.kaedin.spacex.asynctasks.DragonsRequests
 import com.kaedin.spacex.models.Dragon
+import com.kaedin.spacex.utils.SpaceXObject
 import kotlinx.android.synthetic.main.activity_rockets.*
 import kotlinx.android.synthetic.main.activity_rockets.view.*
 import okhttp3.*
@@ -59,7 +61,7 @@ class DragonsFragment : Fragment()  {
             val recyclerView = mView.findViewById<RecyclerView>(R.id.rv_rockets)
             val columnNumbers = 2
             recyclerView.layoutManager = LinearLayoutManager(context)
-            adapter = AdapterDragons(context!!, dragons)
+            adapter = AdapterMainViews(context!!, dragons, SpaceXObject.DRAGON, R.layout.wide_view_list_item)
             mView.text_progress_rockets.visibility = View.GONE
             mView.progress_horizontal_rockets.visibility = View.GONE
             recyclerView.adapter = adapter

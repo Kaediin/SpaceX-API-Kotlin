@@ -3,6 +3,7 @@ package com.kaedin.spacex.utils
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Handler
@@ -19,8 +20,9 @@ import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.kaedin.spacex.R
 import com.kaedin.spacex.activities.*
-import com.kaedin.spacex.adapters.AdapterLaunches
-import com.kaedin.spacex.adapters.AdapterRockets
+import com.kaedin.spacex.adapters.AdapterMainViews
+//import com.kaedin.spacex.adapters.AdapterLaunches
+//import com.kaedin.spacex.adapters.AdapterRockets
 import com.kaedin.spacex.holders.ViewHolder
 import com.kaedin.spacex.models.*
 import com.synnapps.carouselview.CarouselView
@@ -38,6 +40,7 @@ import kotlinx.android.synthetic.main.dragon_heat_shield_dialog.view.*
 import kotlinx.android.synthetic.main.dragon_trunk_dialog.view.*
 import kotlinx.android.synthetic.main.landpad_details_template.view.*
 import kotlinx.android.synthetic.main.launch_details_template.view.*
+import kotlinx.android.synthetic.main.launch_list_item.view.*
 import kotlinx.android.synthetic.main.launchpad_details_template.view.*
 import kotlinx.android.synthetic.main.payload_details_template.view.*
 import kotlinx.android.synthetic.main.payload_list_item.view.*
@@ -54,7 +57,7 @@ import kotlin.collections.ArrayList
 object ViewUtils {
 
     private const val maxLinesDetails = 9
-
+    
     fun setWideViewTemplate(
         holder: ViewHolder,
         context: Context,
@@ -65,7 +68,7 @@ object ViewUtils {
     ) {
         Handler(Looper.getMainLooper()).post {
             val carousel: CarouselView =
-                holder.relativeLayout.findViewById(R.id.wideview_carousel)
+                holder.cardView.findViewById(R.id.wideview_carousel)
 
             val imageListener = ImageListener { pos, imageView ->
                 Glide.with(context)
@@ -77,9 +80,9 @@ object ViewUtils {
             }
             carousel.setImageListener(imageListener)
             carousel.pageCount = images!!.size
-            holder.relativeLayout.wideview_name.text = objectName
+            holder.cardView.wideview_name.text = objectName
 
-            holder.relativeLayout.wide_view_list_item.setOnClickListener {
+            holder.cardView.wide_view_list_item.setOnClickListener {
                 launchWideViewDetails(context, objectId, wideViewTemplateType)
             }
         }
@@ -110,6 +113,77 @@ object ViewUtils {
             }
         }
 
+    }
+
+    fun setViewLaunches(view: View, context: Context, launch: Launch){
+
+        view.pattern.visibility = View.VISIBLE
+        view.flight_details.setTextColor(Color.BLACK)
+
+        val id = launch.id
+        val rocketId = launch.rocket_id
+        val details = launch.details
+        val mission = launch.name
+        val missionsPatchUrl: String? = launch.links.mission_patch_small
+        val upcoming = launch.upcoming
+        val date = launch.date_unix
+
+        view.flight_details.text = details
+
+        view.flight_details.setTextColor(Color.WHITE)
+
+        if (upcoming!!) {
+            if (details == "null") {
+                view.flight_details.setTextColor(Color.RED)
+                view.flight_details.text = context.resources.getString(R.string.upcoming)
+            }
+        } else {
+            if (details == "null") {
+                view.flight_details.text =
+                    context.resources.getString(R.string.no_deatils_available)
+            }
+        }
+
+        if (missionsPatchUrl != null && missionsPatchUrl != "null") {
+            Glide.with(context)
+                .load(missionsPatchUrl)
+                .into(view.pattern)
+        } else {
+            view.pattern.visibility = View.GONE
+        }
+
+        view.mission_name.text = mission
+        view.date_launch.text = DataUtils.getDateTime(date.toString())
+        view.flight_number.text = "Flight: ${launch.flight_number}"
+
+        view.list_item.setOnClickListener {
+            if (!upcoming) {
+                val intent = Intent(context, LaunchDetailActivity::class.java)
+                intent.putExtra("launch_id", id)
+                intent.putExtra("rocket_id", rocketId)
+                intent.putStringArrayListExtra("payload_ids", launch.payload_ids)
+                intent.putStringArrayListExtra("ship_ids", launch.ship_ids)
+                intent.putStringArrayListExtra("capsule_ids", launch.capsule_ids)
+                intent.putStringArrayListExtra("core_ids", launch.cores)
+                intent.putStringArrayListExtra("crew_ids", launch.crew_ids)
+                intent.putExtra("launchpad_id", launch.launchpad_id)
+                context.startActivity(intent)
+            } else {
+                Snackbar.make(
+                    view.list_item,
+                    "This launch is upcoming. There are no details yet",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        view.mission_name.post {
+            val lineCnt: Int = view.mission_name.lineCount * 2
+            val standardLines = if (lineCnt == 4) 9 else 8
+            val leftoverSpace = standardLines - lineCnt
+            view.flight_details.maxLines = leftoverSpace
+            // Perform any actions you want based on the line count here.
+        }
     }
 
     fun setViewLaunchDetails(view: View, launch: Launch, context: Context) {
@@ -998,7 +1072,7 @@ object ViewUtils {
     fun displayLaunchesLandpad(view: View, context: Context, launches: ArrayList<Launch>) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_landpad_launches)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val adapter = AdapterLaunches(context, launches)
+        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
         recyclerView.isNestedScrollingEnabled = false
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
@@ -1008,7 +1082,7 @@ object ViewUtils {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_launchpad_launches)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.isNestedScrollingEnabled = false
-        val adapter = AdapterLaunches(context, launches)
+        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
     }
@@ -1016,7 +1090,7 @@ object ViewUtils {
     fun displayRocketsLaunchpad(view: View, context: Context, rockets: ArrayList<Rocket>) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_launchpad_rockets)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val adapter = AdapterRockets(context, rockets)
+        val adapter = AdapterMainViews(context, rockets, SpaceXObject.ROCKET, R.layout.wide_view_list_item)
         recyclerView.isNestedScrollingEnabled = false
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
@@ -1026,7 +1100,7 @@ object ViewUtils {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_payload_launch)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.isNestedScrollingEnabled = false
-        val adapter = AdapterLaunches(context, launches)
+        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
     }
@@ -1035,7 +1109,7 @@ object ViewUtils {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_ship_launches)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.isNestedScrollingEnabled = false
-        val adapter = AdapterLaunches(context, launches)
+        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
     }
@@ -1044,7 +1118,7 @@ object ViewUtils {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_capsule_launches)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.isNestedScrollingEnabled = false
-        val adapter = AdapterLaunches(context, launches)
+        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
     }
@@ -1053,7 +1127,7 @@ object ViewUtils {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_core_launches)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.isNestedScrollingEnabled = false
-        val adapter = AdapterLaunches(context, launches)
+        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
     }
@@ -1062,7 +1136,7 @@ object ViewUtils {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_crew_launches)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.isNestedScrollingEnabled = false
-        val adapter = AdapterLaunches(context, launches)
+        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
     }

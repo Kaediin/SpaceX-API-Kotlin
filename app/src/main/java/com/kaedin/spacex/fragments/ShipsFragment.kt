@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.spacex.R
-import com.kaedin.spacex.adapters.AdapterShips
+import com.kaedin.spacex.adapters.AdapterMainViews
+//import com.kaedin.spacex.adapters.AdapterShips
 import com.kaedin.spacex.asynctasks.ShipRequests
 import com.kaedin.spacex.models.Ship
+import com.kaedin.spacex.utils.SpaceXObject
 import kotlinx.android.synthetic.main.activity_rockets.*
 import kotlinx.android.synthetic.main.activity_rockets.view.*
 import kotlinx.android.synthetic.main.activity_ships.*
@@ -62,7 +64,7 @@ class ShipsFragment : Fragment()  {
             val recyclerView = mView.findViewById<RecyclerView>(R.id.rv_ships)
             val columnNumbers = 2
             recyclerView.layoutManager = LinearLayoutManager(context)
-            adapter = AdapterShips(context!!, ships)
+            adapter = AdapterMainViews(context!!, ships, SpaceXObject.SHIP, R.layout.ship_list_item)
             mView.text_progress_ships.visibility = View.GONE
             mView.progress_horizontal_ships.visibility = View.GONE
             recyclerView.adapter = adapter

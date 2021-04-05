@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.spacex.R
-import com.kaedin.spacex.adapters.AdapterCapsules
+import com.kaedin.spacex.adapters.AdapterMainViews
+//import com.kaedin.spacex.adapters.AdapterCapsules
 import com.kaedin.spacex.asynctasks.CapsulesRequests
 import com.kaedin.spacex.models.Capsule
+import com.kaedin.spacex.utils.SpaceXObject
 import kotlinx.android.synthetic.main.activity_capsules.*
 import kotlinx.android.synthetic.main.activity_capsules.view.*
 import kotlinx.android.synthetic.main.activity_rockets.*
@@ -62,7 +64,7 @@ class CapsulesFragment : Fragment()  {
             val recyclerView = mView.findViewById<RecyclerView>(R.id.rv_capsules)
             val columnNumbers = 2
             recyclerView.layoutManager = LinearLayoutManager(context)
-            adapter = AdapterCapsules(context!!, capsules)
+            adapter = AdapterMainViews(context!!, capsules, SpaceXObject.CAPSULE, R.layout.capsule_list_item)
             mView.text_progress_capsules.visibility = View.GONE
             mView.progress_horizontal_capsules.visibility = View.GONE
             recyclerView.adapter = adapter

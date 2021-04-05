@@ -11,9 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.spacex.R
-import com.kaedin.spacex.adapters.AdapterCapsules
+import com.kaedin.spacex.adapters.AdapterMainViews
+//import com.kaedin.spacex.adapters.AdapterCapsules
 import com.kaedin.spacex.models.Capsule
 import com.kaedin.spacex.utils.Create
+import com.kaedin.spacex.utils.SpaceXObject
 import com.kaedin.spacex.utils.ViewUtils
 import kotlinx.android.synthetic.main.capsule_details_template.view.*
 import kotlinx.android.synthetic.main.capsules_rv_details_template.view.*
@@ -89,7 +91,7 @@ class CapsuleDetailsFragment : Fragment() {
                 else -> {
                     mRecyclerView = mView.findViewById(R.id.rv_capsules_details)
                     mRecyclerView?.layoutManager = LinearLayoutManager(mView.context)
-                    val adapter = AdapterCapsules(mView.context, capsules)
+                    val adapter = AdapterMainViews(mView.context, capsules, SpaceXObject.CAPSULE, R.layout.capsule_list_item)
                     mRecyclerView?.adapter = adapter
                     adapter.notifyDataSetChanged()
                     mView.progress_capsules_details.visibility = View.GONE

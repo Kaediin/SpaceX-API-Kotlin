@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.spacex.R
-import com.kaedin.spacex.adapters.AdapterPayloads
+import com.kaedin.spacex.adapters.AdapterMainViews
+//import com.kaedin.spacex.adapters.AdapterPayloads
 import com.kaedin.spacex.asynctasks.PayloadRequests
 import com.kaedin.spacex.models.Payload
+import com.kaedin.spacex.utils.SpaceXObject
 import kotlinx.android.synthetic.main.activity_payloads.*
 import kotlinx.android.synthetic.main.activity_payloads.view.*
 import kotlinx.android.synthetic.main.activity_rockets.*
@@ -62,7 +64,7 @@ class PayloadFragment : Fragment()  {
             val recyclerView = mView.findViewById<RecyclerView>(R.id.rv_payloads)
             val columnNumbers = 2
             recyclerView.layoutManager = LinearLayoutManager(context)
-            adapter = AdapterPayloads(context!!, payloads)
+            adapter = AdapterMainViews(context!!, payloads, SpaceXObject.PAYLOAD, R.layout.payload_list_item)
             mView.text_progress_payloads.visibility = View.GONE
             mView.progress_horizontal_payloads.visibility = View.GONE
             recyclerView.adapter = adapter

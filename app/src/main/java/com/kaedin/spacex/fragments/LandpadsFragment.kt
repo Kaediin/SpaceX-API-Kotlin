@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.spacex.R
-import com.kaedin.spacex.adapters.AdapterLandLaunchpads
+import com.kaedin.spacex.adapters.AdapterGoogleMaps
 import com.kaedin.spacex.asynctasks.LandpadsRequests
 import com.kaedin.spacex.models.Landpad
 import kotlinx.android.synthetic.main.activity_landpads.*
@@ -61,7 +61,7 @@ class LandpadsFragment : Fragment()  {
             val recyclerView = mView.findViewById<RecyclerView>(R.id.rv_landpads)
             val columnNumbers = 2
             recyclerView.layoutManager = LinearLayoutManager(context)
-            adapter = AdapterLandLaunchpads(context!!, landpads)
+            adapter = AdapterGoogleMaps(context!!, landpads)
             mView.text_progress_landpads.visibility = View.GONE
             mView.progress_horizontal_landpads.visibility = View.GONE
             recyclerView.adapter = adapter

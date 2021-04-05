@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.spacex.R
-import com.kaedin.spacex.adapters.AdapterCrew
+import com.kaedin.spacex.adapters.AdapterMainViews
+//import com.kaedin.spacex.adapters.AdapterCrew
 import com.kaedin.spacex.asynctasks.CrewRequests
 import com.kaedin.spacex.models.Crew
+import com.kaedin.spacex.utils.SpaceXObject
 import kotlinx.android.synthetic.main.activity_crew.*
 import kotlinx.android.synthetic.main.activity_crew.view.*
 import kotlinx.android.synthetic.main.activity_launches.*
@@ -68,7 +70,7 @@ class CrewFragment : Fragment() {
             val recyclerView = mView.findViewById<RecyclerView>(R.id.rv_crews)
             val columnNumbers = 2
             recyclerView.layoutManager = GridLayoutManager(context, columnNumbers)
-            adapter = AdapterCrew(context!!, crews)
+            adapter = AdapterMainViews(mView.context, crews, SpaceXObject.CREW, R.layout.wide_view_list_item)
             mView.text_progress_crews.visibility = View.GONE
             mView.progress_horizontal_crews.visibility = View.GONE
             recyclerView.adapter = adapter

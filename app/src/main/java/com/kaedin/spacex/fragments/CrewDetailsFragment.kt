@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.spacex.R
-import com.kaedin.spacex.adapters.AdapterCrew
+import com.kaedin.spacex.adapters.AdapterMainViews
+//import com.kaedin.spacex.adapters.AdapterCrew
 import com.kaedin.spacex.models.Crew
 import com.kaedin.spacex.utils.Create
+import com.kaedin.spacex.utils.SpaceXObject
 import com.kaedin.spacex.utils.ViewUtils
 import kotlinx.android.synthetic.main.crew_rv_details_template.view.*
 import okhttp3.*
@@ -90,7 +92,7 @@ class CrewDetailsFragment : Fragment() {
                 else -> {
                     mRecyclerView = mView.findViewById(R.id.rv_crew_details)
                     mRecyclerView?.layoutManager = GridLayoutManager(mView.context, 2)
-                    val adapter = AdapterCrew(mView.context, crews)
+                    val adapter = AdapterMainViews(mView.context, crews, SpaceXObject.CREW, R.layout.wide_view_list_item)
                     mRecyclerView?.adapter = adapter
                     adapter.notifyDataSetChanged()
                     mView.progress_crew_details.visibility = View.GONE

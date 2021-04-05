@@ -11,11 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kaedin.spacex.R
-import com.kaedin.spacex.adapters.AdapterPayloads
-import com.kaedin.spacex.adapters.AdapterShips
+import com.kaedin.spacex.adapters.AdapterMainViews
+//import com.kaedin.spacex.adapters.AdapterPayloads
+//import com.kaedin.spacex.adapters.AdapterShips
 import com.kaedin.spacex.models.Payload
 import com.kaedin.spacex.models.Ship
 import com.kaedin.spacex.utils.Create
+import com.kaedin.spacex.utils.SpaceXObject
 import com.kaedin.spacex.utils.ViewUtils
 import kotlinx.android.synthetic.main.payloads_rv_details_template.view.*
 import kotlinx.android.synthetic.main.ships_rv_details_template.view.*
@@ -84,7 +86,7 @@ class PayloadDetailsFragment : Fragment() {
             } else {
                 mRecyclerView = mView?.findViewById(R.id.rv_payloads_details)
                 mRecyclerView?.layoutManager = LinearLayoutManager(context)
-                val adapter = AdapterPayloads(mView!!.context, payloads)
+                val adapter = AdapterMainViews(mView!!.context, payloads, SpaceXObject.PAYLOAD, R.layout.payload_list_item)
                 mRecyclerView?.adapter = adapter
                 adapter.notifyDataSetChanged()
                 mView?.progress_payloads_details?.visibility = View.GONE

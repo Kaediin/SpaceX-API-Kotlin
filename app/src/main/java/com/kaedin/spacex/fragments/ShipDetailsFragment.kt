@@ -20,9 +20,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.kaedin.spacex.R
-import com.kaedin.spacex.adapters.AdapterShips
+import com.kaedin.spacex.adapters.AdapterMainViews
+//import com.kaedin.spacex.adapters.AdapterShips
 import com.kaedin.spacex.models.Ship
 import com.kaedin.spacex.utils.Create
+import com.kaedin.spacex.utils.SpaceXObject
 import com.kaedin.spacex.utils.ViewUtils
 import kotlinx.android.synthetic.main.capsules_rv_details_template.view.*
 import kotlinx.android.synthetic.main.ship_details_template.*
@@ -93,7 +95,7 @@ class ShipDetailsFragment : Fragment(), OnMapReadyCallback {
             if (ships.size > 1) {
                 mRecyclerView = mView.findViewById(R.id.rv_ships_details)
                 mRecyclerView?.layoutManager = LinearLayoutManager(mView.context)
-                val adapter = AdapterShips(mView.context, ships)
+                val adapter = AdapterMainViews(mView.context, ships, SpaceXObject.SHIP, R.layout.ship_list_item)
                 mRecyclerView?.adapter = adapter
                 adapter.notifyDataSetChanged()
                 mView.rel_view_ships_rv_template.setBackgroundColor(ContextCompat.getColor(mView.context, R.color.main_background_dark))
