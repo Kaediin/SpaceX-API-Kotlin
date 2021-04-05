@@ -26,7 +26,7 @@ class ShipDetailActivity : AppCompatActivity(), OnMapReadyCallback{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
         setContentView(R.layout.ship_details_template)
 
         val shipId = intent.extras?.getString("ship_id")

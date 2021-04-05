@@ -36,4 +36,6 @@
     <string name="burn_time_in_seconds">Burn time in seconds</string>
     <string name="reuseable">Reuseable</string>
     <string name="click_here_to_read_more"><u>Click here to read more!</u></string>
+    <string name="navigation_drawer_open">Open drawer</string>
+    <string name="navigation_drawer_close">Close drawer</string>
 </resources>

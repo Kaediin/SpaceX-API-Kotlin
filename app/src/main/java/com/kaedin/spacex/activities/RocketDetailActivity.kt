@@ -17,7 +17,7 @@ class RocketDetailActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.hide();
+        supportActionBar?.hide()
         setContentView(R.layout.rocket_details_template)
 
         val rocketId = intent.extras?.getString("rocket_id")

@@ -17,7 +17,7 @@ class DragonDetailActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
         setContentView(R.layout.dragon_details_template)
 
         val dragonId = intent.extras?.getString("dragon_id")

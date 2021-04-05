@@ -19,7 +19,7 @@ class CapsuleDetailActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
         setContentView(R.layout.capsule_details_template)
 
         val capsuleId = intent.extras?.getString("capsule_id")

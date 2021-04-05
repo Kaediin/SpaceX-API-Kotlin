@@ -12,7 +12,7 @@ class LaunchDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
 
         val validTabs: HashMap<String, Any> = getDictionaryValidTabs()
         val pagerAdapter = PagerAdapterDetails(supportFragmentManager, validTabs)

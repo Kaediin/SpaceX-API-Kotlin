@@ -61,8 +61,8 @@ class LaunchesFragment : Fragment() {
     fun display(view: View) {
         Handler(Looper.getMainLooper()).post {
             val recyclerView = view.findViewById<RecyclerView>(R.id.rv_launches)
-            recyclerView.layoutManager = LinearLayoutManager(context!!)
-            adapter = AdapterMainViews(context!!, currentLaunches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            adapter = AdapterMainViews(requireContext(), currentLaunches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
             recyclerView.adapter = adapter
             view.text_progress2.visibility = View.GONE
             view.progress_horizontal2.visibility = View.GONE

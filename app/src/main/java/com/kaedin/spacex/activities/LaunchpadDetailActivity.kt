@@ -24,7 +24,7 @@ class LaunchpadDetailActivity : AppCompatActivity(), OnMapReadyCallback{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
         setContentView(R.layout.launchpad_details_template)
 
         val launchpadId = intent.extras?.getString("launchpad_id")

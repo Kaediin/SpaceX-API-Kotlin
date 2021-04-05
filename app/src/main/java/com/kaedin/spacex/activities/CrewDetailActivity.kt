@@ -17,7 +17,7 @@ class CrewDetailActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
         setContentView(R.layout.crew_details_template)
 
         val crewId = intent.extras?.getString("crew_id")

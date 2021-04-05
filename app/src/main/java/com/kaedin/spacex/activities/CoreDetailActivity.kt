@@ -19,7 +19,7 @@ class CoreDetailActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
         setContentView(R.layout.core_details_template)
 
         val coreId = intent.extras?.getString("core_id")

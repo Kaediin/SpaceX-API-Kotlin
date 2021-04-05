@@ -14,7 +14,7 @@ class PayloadDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
         setContentView(R.layout.payload_details_template)
 
         val payloadId = intent.extras?.getString("payload_id")

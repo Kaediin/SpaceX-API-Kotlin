@@ -24,7 +24,7 @@ class LandpadDetailActivity : AppCompatActivity(), OnMapReadyCallback{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
         setContentView(R.layout.landpad_details_template)
 
         val landpadId = intent.extras?.getString("landpad_id")
