@@ -23,16 +23,6 @@ class LaunchDetailActivity : AppCompatActivity() {
         tabs_main_details.tabTextColors = resources.getColorStateList(android.R.color.white)
     }
 
-    fun onDataSetChanged() {
-        if (viewpager_main_details != null) {
-            Thread {
-                this.runOnUiThread {
-                    viewpager_main_details.adapter!!.notifyDataSetChanged()
-                }
-            }
-        }
-    }
-
     fun getDictionaryValidTabs(): HashMap<String, Any> {
         val hashMap = HashMap<String, Any>()
         val launchId = intent.getStringExtra("launch_id")

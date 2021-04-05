@@ -22,18 +22,5 @@ class MainActivity : AppCompatActivity(){
 
         tabs_main_home.setupWithViewPager(viewpager_main_home)
         tabs_main_home.tabTextColors = resources.getColorStateList(android.R.color.white)
-
-    }
-
-
-
-    fun onDataSetChanged() {
-        if (viewpager_main_home != null) {
-            Thread {
-                this.runOnUiThread {
-                    viewpager_main_home.adapter!!.notifyDataSetChanged()
-                }
-            }
-        }
     }
 }
