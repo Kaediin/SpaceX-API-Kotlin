@@ -31,6 +31,7 @@ import kotlinx.android.synthetic.main.capsule_details_template.view.*
 import kotlinx.android.synthetic.main.capsule_list_item.view.*
 import kotlinx.android.synthetic.main.core_details_template.view.*
 import kotlinx.android.synthetic.main.core_list_item.view.*
+import kotlinx.android.synthetic.main.crew_details_template.view.*
 import kotlinx.android.synthetic.main.dragon_details_template.view.*
 import kotlinx.android.synthetic.main.dragon_heat_shield_dialog.view.*
 import kotlinx.android.synthetic.main.dragon_trunk_dialog.view.*
@@ -98,6 +99,12 @@ object ViewUtils {
             WideViewTemplateType.ROCKET -> {
                 val intent = Intent(context, RocketDetailActivity::class.java)
                 intent.putExtra("rocket_id", someId)
+                context.startActivity(intent)
+            }
+
+            WideViewTemplateType.CREW -> {
+                val intent = Intent(context, CrewDetailActivity::class.java)
+                intent.putExtra("crew_id", someId)
                 context.startActivity(intent)
             }
         }
@@ -901,6 +908,36 @@ object ViewUtils {
         }
     }
 
+    fun setViewCrewDetails(view: View, crew: Crew, context: Context){
+        Handler(Looper.getMainLooper()).post {
+            view.crew_name.text = crew.name
+            Glide.with(context)
+                .load(crew.image)
+                .into(view.crew_details_image)
+            view.crew_agency.text = crew.agency
+            view.crew_active.text = crew.status.toString().capitalize(Locale.getDefault())
+            view.crew_wiki_button.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(crew.wikipedia))
+                if (intent.resolveActivity(context.packageManager) != null) {
+                    context.startActivity(intent)
+                } else {
+                    Snackbar.make(
+                        view.wide_view_list_item,
+                        "Unable to locate content",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            if (crew.launchIds.isNullOrEmpty()){
+                view.frame_crew_launches.visibility = View.GONE
+            } else {
+                DataUtils.setRecyclerViewMissions(view, this@ViewUtils, crew.launchIds!!, 8)
+            }
+
+        }
+    }
+
     fun setSafeBooleanImage(
         parentView: RelativeLayout,
         imageView: ImageView,
@@ -1008,6 +1045,15 @@ object ViewUtils {
 
     fun displayLaunchesCores(view: View, context: Context, launches: ArrayList<Launch>) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_core_launches)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.isNestedScrollingEnabled = false
+        val adapter = AdapterLaunches(context, launches)
+        recyclerView.adapter = adapter
+        adapter.notifyDataSetChanged()
+    }
+
+    fun displayLaunchesCrew(view: View, context: Context, launches: ArrayList<Launch>) {
+        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_crew_launches)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.isNestedScrollingEnabled = false
         val adapter = AdapterLaunches(context, launches)

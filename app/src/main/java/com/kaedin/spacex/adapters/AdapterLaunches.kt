@@ -86,6 +86,7 @@ class AdapterLaunches(
                 intent.putStringArrayListExtra("ship_ids", launches[position].ship_ids)
                 intent.putStringArrayListExtra("capsule_ids", launches[position].capsule_ids)
                 intent.putStringArrayListExtra("core_ids", launches[position].cores)
+                intent.putStringArrayListExtra("crew_ids", launches[position].crew_ids)
                 intent.putExtra("launchpad_id", launches[position].launchpad_id)
                 context.startActivity(intent)
             } else {

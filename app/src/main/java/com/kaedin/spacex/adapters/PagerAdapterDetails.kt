@@ -22,12 +22,14 @@ class PagerAdapterDetails(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
             5 -> CapsuleDetailsFragment()
 
-            else -> CoreDetailsFragment()
+            6 -> CoreDetailsFragment()
+
+            else -> CrewDetailsFragment()
         }
     }
 
     override fun getCount(): Int {
-        return 7
+        return 8
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
@@ -44,7 +46,9 @@ class PagerAdapterDetails(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
             5 -> "Capsule"
 
-            else -> "Cores"
+            6 -> "Cores"
+
+            else -> "Crew"
         }
     }
 }

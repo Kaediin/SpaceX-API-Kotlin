@@ -87,6 +87,8 @@ object Create {
             getValueFromJsonObject(json, "ships", ArrayList<String>()) as ArrayList<String>
         launch.capsule_ids =
             getValueFromJsonObject(json, "capsules", ArrayList<String>()) as ArrayList<String>
+        launch.crew_ids =
+            getValueFromJsonObject(json, "crew", ArrayList<String>()) as ArrayList<String>
 
         return launch
     }
@@ -97,8 +99,7 @@ object Create {
         launch.net = getValueFromJsonObject(json, "net", Boolean) as Boolean
         launch.window = getValueFromJsonObject(json, "window", Int) as? Int
         launch.success = getValueFromJsonObject(json, "success", Boolean) as Boolean
-        launch.crew_ids =
-            getValueFromJsonObject(json, "crew", ArrayList<String>()) as ArrayList<String>
+
         launch.auto_update = getValueFromJsonObject(json, "auto_update", Boolean) as Boolean
         launch.launch_library_id =
             getValueFromJsonObject(json, "launch_library_id", String).toString()
@@ -308,5 +309,17 @@ object Create {
         core.status = getValueFromJsonObject(json, "status", String).toString()
         core.id = getValueFromJsonObject(json, "id", String).toString()
         return core
+    }
+
+    fun crew(json: JSONObject) : Crew {
+        val crew = Crew()
+        crew.id = getValueFromJsonObject(json, "id", String).toString()
+        crew.name = getValueFromJsonObject(json, "name", String).toString()
+        crew.agency = getValueFromJsonObject(json, "agency", String).toString()
+        crew.image = getValueFromJsonObject(json, "image", String).toString()
+        crew.wikipedia = getValueFromJsonObject(json, "wikipedia", String).toString()
+        crew.launchIds = getValueFromJsonObject(json, "launches", ArrayList<String>()) as? ArrayList<String>
+        crew.status = getValueFromJsonObject(json, "status", String).toString()
+        return crew
     }
 }

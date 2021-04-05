@@ -8,8 +8,8 @@ data class Crew(
     var agency : String?,
     var image : String?,
     var wikipedia : String?,
-    var launch_ids : ArrayList<String>?,
-    var status : Boolean?
+    var launchIds : ArrayList<String>?,
+    var status : String?
 ) : Serializable {
     constructor() : this(null, null, null, null, null, null, null)
 }

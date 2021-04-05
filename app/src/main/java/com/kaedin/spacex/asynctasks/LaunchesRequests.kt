@@ -87,6 +87,10 @@ class LaunchesRequests(
             7 -> {
                 activityViewUtils?.displayLaunchesCores(view, view.context, resultsSorted)
             }
+
+             8 -> {
+                 activityViewUtils?.displayLaunchesCrew(view, view.context, resultsSorted)
+             }
         }
     }
 
