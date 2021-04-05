@@ -13,7 +13,7 @@ import org.json.JSONObject
 import java.io.IOException
 
 
-class RocketDetailsFragment : Fragment() {
+class RocketDetailsFragment(val rocketId : String) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +26,7 @@ class RocketDetailsFragment : Fragment() {
     }
 
     fun display(view: View) {
-        val rocketId = activity!!.intent.extras!!.getString("rocket_id", "")
+//        val rocketId = activity!!.intent.extras!!.getString("rocket_id", "")
 
         val client = OkHttpClient()
         val url = "https://api.spacexdata.com/v4/rockets/$rocketId"

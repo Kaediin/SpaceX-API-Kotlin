@@ -26,7 +26,7 @@ import java.io.IOException
 
 class PayloadDetailsFragment : Fragment() {
 
-    private lateinit var mView: View
+    private var mView: View? = null
     private var mRecyclerView: RecyclerView? = null
 
     override fun onCreateView(
@@ -80,14 +80,14 @@ class PayloadDetailsFragment : Fragment() {
                 val rootView = view as ViewGroup
                 rootView.removeAllViews()
                 rootView.addView(mView)
-                ViewUtils.setViewPayloadDetails(mView, payloads[0], context!!)
+                ViewUtils.setViewPayloadDetails(mView!!, payloads[0], context!!)
             } else {
-                mRecyclerView = mView.findViewById(R.id.rv_payloads_details)
-                mRecyclerView?.layoutManager = LinearLayoutManager(mView.context)
-                val adapter = AdapterPayloads(mView.context, payloads)
+                mRecyclerView = mView?.findViewById(R.id.rv_payloads_details)
+                mRecyclerView?.layoutManager = LinearLayoutManager(context)
+                val adapter = AdapterPayloads(mView!!.context, payloads)
                 mRecyclerView?.adapter = adapter
                 adapter.notifyDataSetChanged()
-                mView.progress_payloads_details.visibility = View.GONE
+                mView?.progress_payloads_details?.visibility = View.GONE
             }
         }
     }

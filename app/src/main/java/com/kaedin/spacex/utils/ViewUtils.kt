@@ -32,6 +32,7 @@ import kotlinx.android.synthetic.main.capsule_list_item.view.*
 import kotlinx.android.synthetic.main.core_details_template.view.*
 import kotlinx.android.synthetic.main.core_list_item.view.*
 import kotlinx.android.synthetic.main.crew_details_template.view.*
+import kotlinx.android.synthetic.main.crew_rv_details_template.view.*
 import kotlinx.android.synthetic.main.dragon_details_template.view.*
 import kotlinx.android.synthetic.main.dragon_heat_shield_dialog.view.*
 import kotlinx.android.synthetic.main.dragon_trunk_dialog.view.*
@@ -848,6 +849,7 @@ object ViewUtils {
                 DataUtils.setRecyclerViewMissions(view, this@ViewUtils, capsule.launches, 6)
             }
 
+            view.rel_capsule_template.visibility = View.VISIBLE
             view.progress_capsule.visibility = View.GONE
         }
     }
@@ -903,6 +905,8 @@ object ViewUtils {
             } else {
                 DataUtils.setRecyclerViewMissions(view, this@ViewUtils, core.launchIds, 7)
             }
+
+            view.rel_core_template.visibility = View.VISIBLE
             view.progress_core.visibility = View.GONE
 
         }
@@ -935,6 +939,8 @@ object ViewUtils {
                 DataUtils.setRecyclerViewMissions(view, this@ViewUtils, crew.launchIds!!, 8)
             }
 
+            view.rel_crew_template.visibility = View.VISIBLE
+            view.progress_crew.visibility = View.GONE
         }
     }
 

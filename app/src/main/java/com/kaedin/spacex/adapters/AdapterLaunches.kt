@@ -15,6 +15,7 @@ import com.kaedin.spacex.activities.LaunchDetailActivity
 import com.kaedin.spacex.models.Launch
 import com.kaedin.spacex.utils.DataUtils
 import kotlinx.android.synthetic.main.launch_list_item.view.*
+import java.lang.RuntimeException
 import java.util.*
 import kotlin.collections.ArrayList
 
