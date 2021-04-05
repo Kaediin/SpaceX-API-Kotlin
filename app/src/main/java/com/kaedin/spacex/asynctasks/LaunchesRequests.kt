@@ -2,14 +2,14 @@ package com.kaedin.spacex.asynctasks
 
 import android.os.AsyncTask
 import android.view.View
-import com.kaedin.spacex.utils.Create
+import com.kaedin.spacex.R
 import com.kaedin.spacex.fragments.LaunchesFragment
 import com.kaedin.spacex.models.Launch
+import com.kaedin.spacex.utils.Create
 import com.kaedin.spacex.utils.DataUtils
 import com.kaedin.spacex.utils.ViewUtils
 import org.json.JSONArray
 import org.json.JSONObject
-import java.lang.Exception
 
 class LaunchesRequests(
     private var activityLaunches: LaunchesFragment?,
@@ -55,43 +55,29 @@ class LaunchesRequests(
     override fun onPostExecute(result: ArrayList<Launch>?) {
         super.onPostExecute(result)
         println("On Post Execute")
-//        val resultsSorted = result!!
+
         val resultsSorted = DataUtils.sortOldestToNewest(result!!, true)
+        var layout: Int? = null
 
         when (value) {
-            1 -> {
-                activityViewUtils?.displayLaunchesLandpad(view, view.context, resultsSorted)
-            }
-
-            2 -> {
-                activityViewUtils?.displayLaunchesLaunchpad(view, view.context, resultsSorted)
-            }
-
+            1 -> layout = R.id.rv_landpad_launches
+            2 -> layout = R.id.rv_launchpad_launches
             3 -> {
                 activityLaunches?.currentLaunches = resultsSorted
                 activityLaunches?.display(view)
             }
-
-            4 -> {
-                activityViewUtils?.displayPayloadLaunch(view, view.context, resultsSorted)
-            }
-
-            5 -> {
-                activityViewUtils?.displayLaunchesShip(view, view.context, resultsSorted)
-            }
-
-            6 -> {
-                activityViewUtils?.displayLaunchesCapsules(view, view.context, resultsSorted)
-            }
-
-            7 -> {
-                activityViewUtils?.displayLaunchesCores(view, view.context, resultsSorted)
-            }
-
-             8 -> {
-                 activityViewUtils?.displayLaunchesCrew(view, view.context, resultsSorted)
-             }
+            4 -> layout = R.id.rv_payload_launch
+            5 -> layout = R.id.rv_ship_launches
+            6 -> layout = R.id.rv_capsule_launches
+            7 -> layout = R.id.rv_core_launches
+            8 -> layout = R.id.rv_crew_launches
         }
+        if (layout != null) activityViewUtils?.displayLaunchesInView(
+            view,
+            view.context,
+            resultsSorted,
+            layout
+        )
     }
 
     override fun onProgressUpdate(vararg values: String?) {

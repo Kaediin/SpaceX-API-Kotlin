@@ -1068,9 +1068,8 @@ object ViewUtils {
         textView.text = "$value $extension"
     }
 
-
-    fun displayLaunchesLandpad(view: View, context: Context, launches: ArrayList<Launch>) {
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_landpad_launches)
+    fun displayLaunchesInView(view: View, context: Context, launches: ArrayList<Launch>, recyclerViewLayout: Int){
+        val recyclerView = view.findViewById<RecyclerView>(recyclerViewLayout)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
         recyclerView.isNestedScrollingEnabled = false
@@ -1078,68 +1077,13 @@ object ViewUtils {
         adapter.notifyDataSetChanged()
     }
 
-    fun displayLaunchesLaunchpad(view: View, context: Context, launches: ArrayList<Launch>) {
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_launchpad_launches)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.isNestedScrollingEnabled = false
-        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
-        recyclerView.adapter = adapter
-        adapter.notifyDataSetChanged()
-    }
-
-    fun displayRocketsLaunchpad(view: View, context: Context, rockets: ArrayList<Rocket>) {
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_launchpad_rockets)
+    fun displayRocketsInView(view: View, context: Context, rockets: ArrayList<Rocket>, recyclerViewLayout: Int) {
+        val recyclerView = view.findViewById<RecyclerView>(recyclerViewLayout)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val adapter = AdapterMainViews(context, rockets, SpaceXObject.ROCKET, R.layout.wide_view_list_item)
         recyclerView.isNestedScrollingEnabled = false
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
     }
-
-    fun displayPayloadLaunch(view: View, context: Context, launches: ArrayList<Launch>) {
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_payload_launch)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.isNestedScrollingEnabled = false
-        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
-        recyclerView.adapter = adapter
-        adapter.notifyDataSetChanged()
-    }
-
-    fun displayLaunchesShip(view: View, context: Context, launches: ArrayList<Launch>) {
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_ship_launches)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.isNestedScrollingEnabled = false
-        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
-        recyclerView.adapter = adapter
-        adapter.notifyDataSetChanged()
-    }
-
-    fun displayLaunchesCapsules(view: View, context: Context, launches: ArrayList<Launch>) {
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_capsule_launches)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.isNestedScrollingEnabled = false
-        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
-        recyclerView.adapter = adapter
-        adapter.notifyDataSetChanged()
-    }
-
-    fun displayLaunchesCores(view: View, context: Context, launches: ArrayList<Launch>) {
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_core_launches)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.isNestedScrollingEnabled = false
-        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
-        recyclerView.adapter = adapter
-        adapter.notifyDataSetChanged()
-    }
-
-    fun displayLaunchesCrew(view: View, context: Context, launches: ArrayList<Launch>) {
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_crew_launches)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.isNestedScrollingEnabled = false
-        val adapter = AdapterMainViews(context, launches, SpaceXObject.LAUNCH, R.layout.launch_list_item)
-        recyclerView.adapter = adapter
-        adapter.notifyDataSetChanged()
-    }
-
 
 }

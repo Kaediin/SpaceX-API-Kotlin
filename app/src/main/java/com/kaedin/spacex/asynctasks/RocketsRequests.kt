@@ -2,13 +2,13 @@ package com.kaedin.spacex.asynctasks
 
 import android.os.AsyncTask
 import android.view.View
+import com.kaedin.spacex.R
 import com.kaedin.spacex.fragments.RocketsFragment
 import com.kaedin.spacex.models.Rocket
 import com.kaedin.spacex.utils.Create
 import com.kaedin.spacex.utils.ViewUtils
 import org.json.JSONArray
 import org.json.JSONObject
-import java.lang.Exception
 
 class RocketsRequests(
     private var activity: RocketsFragment?,
@@ -45,7 +45,12 @@ class RocketsRequests(
         super.onPostExecute(result)
         println("On Post Execute")
         if (viewUtils != null && view != null) {
-            viewUtils?.displayRocketsLaunchpad(view!!, view!!.context, result!!)
+            viewUtils?.displayRocketsInView(
+                view!!,
+                view!!.context,
+                result!!,
+                R.id.rv_launchpad_rockets
+            )
         } else {
             activity?.rockets = result!!
             activity?.display()
