@@ -15,7 +15,8 @@ class LaunchesRequests(
     private var activityLaunches: LaunchesFragment?,
     private var activityViewUtils: ViewUtils?,
     private var view: View,
-    private var value: Int
+    private var value: Int,
+    private var showUpcoming: Boolean = true
 ) : AsyncTask<JSONArray, String, ArrayList<Launch>>() {
 
     override fun onPreExecute() {
@@ -44,7 +45,11 @@ class LaunchesRequests(
                 jsonArray.length().toString()
             )
 
-            launches.add(launch)
+            if (!showUpcoming && launch.upcoming == true){
+                continue
+            } else {
+                launches.add(launch)
+            }
 
 
         }
