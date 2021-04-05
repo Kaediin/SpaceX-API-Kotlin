@@ -9,7 +9,7 @@
         android:id="@+id/tabs_main_details"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="@color/tab_layout"
         android:elevation="20dp"
         app:tabMode="scrollable" />
 

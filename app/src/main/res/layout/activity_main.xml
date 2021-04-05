@@ -17,7 +17,7 @@
         android:id="@+id/tabs_main_home"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="@color/tab_layout"
         app:tabMode="scrollable" />
 
 
