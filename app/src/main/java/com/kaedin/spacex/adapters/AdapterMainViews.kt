@@ -33,11 +33,11 @@ class AdapterMainViews(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         when (spaceXObject){
-            SpaceXObject.CAPSULE -> ViewUtils.setViewCapsules(holder.cardView, context,  objects[position] as Capsule)
-            SpaceXObject.CORE -> ViewUtils.setViewCores(holder.cardView, context,  objects[position] as Core)
-            SpaceXObject.SHIP -> ViewUtils.setViewShips(holder.cardView, context, objects[position] as Ship)
-            SpaceXObject.LAUNCH -> ViewUtils.setViewLaunches(holder.cardView, context, objects[position] as Launch)
-            SpaceXObject.PAYLOAD -> ViewUtils.setViewPayloads(holder.cardView, context, objects[position] as Payload)
+            SpaceXObject.CAPSULE -> ViewUtils.setViewCapsules(holder.cardView, context,  objects[position] as? Capsule)
+            SpaceXObject.CORE -> ViewUtils.setViewCores(holder.cardView, context,  objects[position] as? Core)
+            SpaceXObject.SHIP -> ViewUtils.setViewShips(holder.cardView, context, objects[position] as? Ship)
+            SpaceXObject.LAUNCH -> ViewUtils.setViewLaunches(holder.cardView, context, objects[position] as? Launch)
+            SpaceXObject.PAYLOAD -> ViewUtils.setViewPayloads(holder.cardView, context, objects[position] as? Payload)
             SpaceXObject.CREW -> {
                 val crew = objects[position] as Crew
                 val images = ArrayList<String>(listOf(crew.image))

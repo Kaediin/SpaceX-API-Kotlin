@@ -115,18 +115,18 @@ object ViewUtils {
 
     }
 
-    fun setViewLaunches(view: View, context: Context, launch: Launch){
+    fun setViewLaunches(view: View, context: Context, launch: Launch?){
 
         view.pattern.visibility = View.VISIBLE
         view.flight_details.setTextColor(Color.BLACK)
 
-        val id = launch.id
-        val rocketId = launch.rocket_id
-        val details = launch.details
-        val mission = launch.name
-        val missionsPatchUrl: String? = launch.links.mission_patch_small
-        val upcoming = launch.upcoming
-        val date = launch.date_unix
+        val id = launch?.id
+        val rocketId = launch?.rocket_id
+        val details = launch?.details
+        val mission = launch?.name
+        val missionsPatchUrl: String? = launch?.links?.mission_patch_small
+        val upcoming = launch?.upcoming
+        val date = launch?.date_unix
 
         view.flight_details.text = details
 
@@ -647,14 +647,14 @@ object ViewUtils {
         }
     }
 
-    fun setViewPayloads(view: View, context: Context, payload: Payload) {
+    fun setViewPayloads(view: View, context: Context, payload: Payload?) {
         Handler(Looper.getMainLooper()).post {
-            view.payload_name.text = payload.name
-            view.payload_type.text = payload.type
+            view.payload_name.text = payload?.name
+            view.payload_type.text = payload?.type
 
             view.payloads_list_item.setOnClickListener {
                 val intent = Intent(context, PayloadDetailActivity::class.java)
-                intent.putExtra("payload_id", payload.id)
+                intent.putExtra("payload_id", payload?.id)
                 context.startActivity(intent)
             }
         }
@@ -727,11 +727,11 @@ object ViewUtils {
         }
     }
 
-    fun setViewShips(view: View, context: Context, ship: Ship) {
-        view.ship_name.text = ship.name
-        view.ship_type.text = ship.type
+    fun setViewShips(view: View, context: Context, ship: Ship?) {
+        view.ship_name.text = ship?.name
+        view.ship_type.text = ship?.type
 
-        if (ship.image!!.contains("http")) {
+        if (ship?.image!!.contains("http")) {
             Glide.with(context)
                 .load(ship.image)
                 .into(view.ship_image)
@@ -882,13 +882,13 @@ object ViewUtils {
         }
     }
 
-    fun setViewCapsules(view: View, context: Context, capsule: Capsule) {
-        view.capsule_type.text = capsule.type
-        view.capsule_serial.text = capsule.serial
+    fun setViewCapsules(view: View, context: Context, capsule: Capsule?) {
+        view.capsule_type.text = capsule?.type
+        view.capsule_serial.text = capsule?.serial
 
         view.capsules_list_item.setOnClickListener {
             val intent = Intent(context, CapsuleDetailActivity::class.java)
-            intent.putExtra("capsule_id", capsule.id)
+            intent.putExtra("capsule_id", capsule?.id)
             context.startActivity(intent)
         }
     }
@@ -928,12 +928,12 @@ object ViewUtils {
         }
     }
 
-    fun setViewCores(view: View, context: Context, core: Core) {
-        view.core_serial.text = core.serial
+    fun setViewCores(view: View, context: Context, core: Core?) {
+        view.core_serial.text = core?.serial
 
         view.cores_list_item.setOnClickListener {
             val intent = Intent(context, CoreDetailActivity::class.java)
-            intent.putExtra("core_id", core.id)
+            intent.putExtra("core_id", core?.id)
             context.startActivity(intent)
         }
     }

@@ -11,7 +11,7 @@
             android:title="Rockets" />
         <item
             android:id="@+id/nav_item_two"
-            android:icon="@drawable/ic_dragon"
+            android:icon="@drawable/ic_dragon_new"
             android:title="Dragons" />
         <item
             android:id="@+id/nav_item_three"
@@ -19,11 +19,11 @@
             android:title="Landingpads" />
         <item
             android:id="@+id/nav_item_four"
-            android:icon="@drawable/ic_launchpad"
+            android:icon="@drawable/ic_launchpad_new"
             android:title="Launchpads" />
         <item
             android:id="@+id/nav_item_five"
-            android:icon="@drawable/ic_payload"
+            android:icon="@drawable/ic_car"
             android:title="Payloads" />
         <item
             android:id="@+id/nav_item_six"
