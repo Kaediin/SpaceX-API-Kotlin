@@ -1,8 +1,14 @@
 package com.kaedin.spacex.activities
 
+import android.content.Intent
+import android.content.IntentSender.SendIntentException
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
+import androidx.annotation.Nullable
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -11,9 +17,19 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.play.core.appupdate.AppUpdateInfo
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.InstallState
+import com.google.android.play.core.install.InstallStateUpdatedListener
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.InstallStatus
+import com.google.android.play.core.install.model.UpdateAvailability
 import com.kaedin.spacex.R
 import com.kaedin.spacex.adapters.PagerAdapterHome
 import kotlinx.android.synthetic.main.app_bar_main.*
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -21,6 +37,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var toggle: ActionBarDrawerToggle
     private var mViewpager: ViewPager? = null
     private var mToolbar: Toolbar? = null
+    private var mAppUpdateManager: AppUpdateManager? = null
+    private val RC_APP_UPDATE = 11
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,10 +86,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             override fun onPageScrollStateChanged(state: Int) {
             }
         })
+
+
     }
 
-    fun getTitleToolbar(position : Int) : String {
-        when(position){
+    fun getTitleToolbar(position: Int): String {
+        when (position) {
             0 -> return "Launches"
             1 -> return "Rockets"
             2 -> return "Dragons"
@@ -86,6 +106,82 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return ""
     }
 
+    override fun onStart() {
+        super.onStart()
+        println("(MainActivity - onStart)")
+        mAppUpdateManager = AppUpdateManagerFactory.create(this)
+
+        mAppUpdateManager?.registerListener(installStateUpdatedListener)
+        println("(MainActivity - onStart) mAppUpdateManager registered")
+
+
+        mAppUpdateManager?.appUpdateInfo?.addOnSuccessListener { appUpdateInfo: AppUpdateInfo ->
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE /*AppUpdateType.IMMEDIATE*/)
+            ) {
+                try {
+                    println("(MainActivity - onStart) update found")
+                    mAppUpdateManager?.startUpdateFlowForResult(
+                        appUpdateInfo,
+                        AppUpdateType.IMMEDIATE /*AppUpdateType.IMMEDIATE*/,
+                        this@MainActivity,
+                        RC_APP_UPDATE
+                    )
+                } catch (e: SendIntentException) {
+                    e.printStackTrace()
+                }
+            } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                //CHECK THIS if AppUpdateType.FLEXIBLE, otherwise you can skip
+                popupSnackbarForCompleteUpdate()
+            } else {
+                println("(MainActivity - onStart) ${appUpdateInfo.updateAvailability()}")
+            }
+        }?.addOnFailureListener { failure ->
+            println("(MainActivity - onStart) failure: $failure")
+        }
+    }
+
+    private var installStateUpdatedListener: InstallStateUpdatedListener =
+        object : InstallStateUpdatedListener {
+            override fun onStateUpdate(state: InstallState) {
+                if (state.installStatus() == InstallStatus.DOWNLOADED) {
+                    //CHECK THIS if AppUpdateType.FLEXIBLE, otherwise you can skip
+                    popupSnackbarForCompleteUpdate()
+                } else if (state.installStatus() == InstallStatus.INSTALLED) {
+                    if (mAppUpdateManager != null) {
+                        mAppUpdateManager!!.unregisterListener(this)
+                    }
+                } else {
+                    Log.i(
+                        "MainActivity",
+                        "InstallStateUpdatedListener: state: " + state.installStatus()
+                    )
+                }
+            }
+        }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_APP_UPDATE) {
+            if (resultCode != RESULT_OK) {
+                Log.e("MainActivity", "onActivityResult: app download failed")
+            }
+        }
+    }
+
+    private fun popupSnackbarForCompleteUpdate() {
+        val snackbar = Snackbar.make(
+            findViewById(R.id.drawer_layout),
+            "New app is ready!",
+            Snackbar.LENGTH_INDEFINITE
+        )
+        snackbar.setAction("Install") { view: View? ->
+            if (mAppUpdateManager != null) {
+                mAppUpdateManager!!.completeUpdate()
+            }
+        }
+        snackbar.show()
+    }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
@@ -102,6 +198,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (mAppUpdateManager != null) {
+            mAppUpdateManager?.unregisterListener(installStateUpdatedListener);
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SpaceX Launches</string>
+    <string name="app_name">SpaceX\'s Journey to Mars</string>
 
     <string name="upcoming">UPCOMING</string>
     <string name="no_deatils_available">No details available</string>
