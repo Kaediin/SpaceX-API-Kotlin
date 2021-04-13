@@ -19,9 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/tab_color"
+            android:elevation="2dp"
             android:theme="@style/ToolbarColoredHamburger"
             app:layout_scrollFlags="scroll|enterAlways"
-            android:elevation="2dp"
             app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -30,6 +30,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:orientation="vertical">
 
         <androidx.viewpager.widget.ViewPager
