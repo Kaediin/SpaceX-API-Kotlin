@@ -2,27 +2,73 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/nav_header"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="wrap_content"
     android:background="@color/main_background"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?attr/selectableItemBackgroundBorderless"
     android:gravity="bottom"
-    android:orientation="vertical"
-    android:padding="16dp"
+    android:orientation="horizontal"
+    android:padding="10dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:id="@+id/nav_header_imageView"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:src="@mipmap/ic_launcher" />
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/nav_header_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:text="Kaedin Schouten"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        <ImageView
+            android:id="@+id/nav_header_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_launcher" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5">
+
+        <TextView
+            android:id="@+id/nav_header_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_made_by_kaedin_schouten"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/nav_header_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nav_header_textView"
+            android:text="skaedin@gmail.com"
+            android:textAlignment="center" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nav_header_email"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/nav_header_button_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Feel free to donate!"
+                android:textAlignment="center"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/nav_header_donate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nav_header_button_text"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/main_background_dark"
+                android:text="Buy me a coffee!" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 </LinearLayout>

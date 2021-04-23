@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SpaceX\'s Journey to Mars</string>
 
@@ -38,4 +39,5 @@
     <string name="click_here_to_read_more"><u>Click here to read more!</u></string>
     <string name="navigation_drawer_open">Open drawer</string>
     <string name="navigation_drawer_close">Close drawer</string>
+    <string name="app_made_by_kaedin_schouten">Made by: <b>Kaedin Schouten</b></string>
 </resources>

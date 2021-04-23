@@ -52,7 +52,7 @@ class LaunchesFragment : Fragment() {
                 progress_horizontal2.visibility = View.GONE
             }
             override fun onResponse(call: Call, response: Response) {
-                LaunchesRequests(this@LaunchesFragment, null, view, 3, showUpcoming = false).execute(JSONArray(response.body()!!.string()))
+                LaunchesRequests(this@LaunchesFragment, null, view, 3, showUpcoming = true).execute(JSONArray(response.body()!!.string()))
             }
         })
 

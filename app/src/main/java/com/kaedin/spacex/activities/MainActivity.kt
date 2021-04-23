@@ -7,15 +7,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import com.android.billingclient.api.*
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateInfo
@@ -28,7 +29,13 @@ import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.kaedin.spacex.R
 import com.kaedin.spacex.adapters.PagerAdapterHome
+import com.kaedin.spacex.controllers.BillingController
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.donation_views.view.*
+import kotlinx.android.synthetic.main.donations.view.*
+import kotlinx.android.synthetic.main.nav_header_main.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
+import java.util.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -43,22 +50,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val pagerAdapter = PagerAdapterHome(supportFragmentManager)
-        viewpager_main_home.adapter = pagerAdapter
-        viewpager_main_home.offscreenPageLimit = 10
-        mViewpager = viewpager_main_home
 
-        tabs_main_home.setupWithViewPager(viewpager_main_home)
-        tabs_main_home.tabTextColors = resources.getColorStateList(android.R.color.white)
+        setupHomeScreen()
+    }
 
+    fun setupHomeScreen() {
+        setupToolbar()
+        setupViewPager()
+    }
+
+    fun setupToolbar() {
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         toolbar.title = "Launches"
         mToolbar = toolbar
         setSupportActionBar(toolbar)
-
         drawer = findViewById(R.id.drawer_layout)
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
+        val header: View = navigationView.getHeaderView(0)
+        header.nav_header_donate.setOnClickListener {
+            BillingController(this@MainActivity, this).run()
+        }
 
         toggle = ActionBarDrawerToggle(
             this,
@@ -86,8 +98,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             override fun onPageScrollStateChanged(state: Int) {
             }
         })
+    }
 
+    fun setupViewPager() {
+        val pagerAdapter = PagerAdapterHome(supportFragmentManager)
+        viewpager_main_home.adapter = pagerAdapter
+        viewpager_main_home.offscreenPageLimit = 10
+        mViewpager = viewpager_main_home
 
+        tabs_main_home.setupWithViewPager(viewpager_main_home)
+        tabs_main_home.tabTextColors =
+            AppCompatResources.getColorStateList(this, android.R.color.white)
     }
 
     fun getTitleToolbar(position: Int): String {
@@ -133,8 +154,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
                 //CHECK THIS if AppUpdateType.FLEXIBLE, otherwise you can skip
                 popupSnackbarForCompleteUpdate()
-            } else {
-                println("(MainActivity - onStart) ${appUpdateInfo.updateAvailability()}")
             }
         }?.addOnFailureListener { failure ->
             println("(MainActivity - onStart) failure: $failure")
@@ -261,4 +280,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             super.onBackPressed()
         }
     }
+
 }
