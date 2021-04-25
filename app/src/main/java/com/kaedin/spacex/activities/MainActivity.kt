@@ -2,6 +2,7 @@ package com.kaedin.spacex.activities
 
 import android.content.Intent
 import android.content.IntentSender.SendIntentException
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.preference.PreferenceManager
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.android.billingclient.api.*
@@ -30,6 +32,7 @@ import com.google.android.play.core.install.model.UpdateAvailability
 import com.kaedin.spacex.R
 import com.kaedin.spacex.adapters.PagerAdapterHome
 import com.kaedin.spacex.controllers.BillingController
+import com.kaedin.spacex.fragments.LaunchesFragment
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.donation_views.view.*
 import kotlinx.android.synthetic.main.donations.view.*
@@ -38,7 +41,7 @@ import kotlinx.android.synthetic.main.nav_header_main.view.*
 import java.util.*
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private lateinit var drawer: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
@@ -46,17 +49,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var mToolbar: Toolbar? = null
     private var mAppUpdateManager: AppUpdateManager? = null
     private val RC_APP_UPDATE = 11
+    private lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
+        sharedPrefs.registerOnSharedPreferenceChangeListener(this)
         setupHomeScreen()
     }
 
     fun setupHomeScreen() {
         setupToolbar()
-        setupViewPager()
+        setupViewPager(sharedPrefs.getBoolean(getString(R.string.prefs_show_nav_bar), false))
     }
 
     fun setupToolbar() {
@@ -100,11 +105,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         })
     }
 
-    fun setupViewPager() {
+    fun changeVisibilityTabs(showTabs: Boolean) {
+        tabs_main_home.visibility = if (showTabs) View.VISIBLE else View.GONE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        sharedPrefs.unregisterOnSharedPreferenceChangeListener(this)
+    }
+
+    fun setupViewPager(showTabs: Boolean) {
         val pagerAdapter = PagerAdapterHome(supportFragmentManager)
         viewpager_main_home.adapter = pagerAdapter
         viewpager_main_home.offscreenPageLimit = 10
         mViewpager = viewpager_main_home
+        tabs_main_home.visibility = if (showTabs) View.VISIBLE else View.GONE
 
         tabs_main_home.setupWithViewPager(viewpager_main_home)
         tabs_main_home.tabTextColors =
@@ -268,6 +283,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 mViewpager?.setCurrentItem(9, true)
                 mToolbar?.title = getTitleToolbar(9)
             }
+            R.id.nav_item_settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+            }
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
@@ -278,6 +296,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             drawer.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
+        }
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        if (sharedPreferences != null) {
+            when (key) {
+                getString(R.string.prefs_show_nav_bar) -> {
+                    changeVisibilityTabs(sharedPreferences.getBoolean(key, false))
+                }
+            }
         }
     }
 

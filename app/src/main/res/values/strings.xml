@@ -40,4 +40,7 @@
     <string name="navigation_drawer_open">Open drawer</string>
     <string name="navigation_drawer_close">Close drawer</string>
     <string name="app_made_by_kaedin_schouten">Made by: <b>Kaedin Schouten</b></string>
+    <string name="prefs_show_upcoming">show_upcoming</string>
+    <string name="prefs_show_nav_bar">show_nav_bar</string>
+
 </resources>

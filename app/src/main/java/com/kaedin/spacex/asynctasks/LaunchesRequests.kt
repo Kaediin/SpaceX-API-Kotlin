@@ -16,7 +16,6 @@ class LaunchesRequests(
     private var activityViewUtils: ViewUtils?,
     private var view: View,
     private var value: Int,
-    private var showUpcoming: Boolean = true
 ) : AsyncTask<JSONArray, String, ArrayList<Launch>>() {
 
     override fun onPreExecute() {
@@ -44,13 +43,7 @@ class LaunchesRequests(
                 "Gathering info for flight: $i/${jsonArray.length()}",
                 jsonArray.length().toString()
             )
-
-            if (!showUpcoming && launch.upcoming == true){
-                continue
-            } else {
-                launches.add(launch)
-            }
-
+            launches.add(launch)
 
         }
 
@@ -68,6 +61,7 @@ class LaunchesRequests(
             1 -> layout = R.id.rv_landpad_launches
             2 -> layout = R.id.rv_launchpad_launches
             3 -> {
+                activityLaunches?.allLaunches = resultsSorted
                 activityLaunches?.currentLaunches = resultsSorted
                 activityLaunches?.display(view)
             }

@@ -15,7 +15,7 @@ import kotlin.collections.ArrayList
 
 class AdapterMainViews(
     private val context: Context,
-    private val objects: ArrayList<*>,
+    private var objects: ArrayList<*>,
     private val spaceXObject: SpaceXObject,
     private val layoutResource : Int
 ) :
@@ -52,7 +52,11 @@ class AdapterMainViews(
                 ViewUtils.setWideViewTemplate(holder, context, rocket.flickr_images, rocket.id, rocket.name!!, WideViewTemplateType.ROCKET)
             }
         }
+    }
 
+    fun updateAdapterLaunches(launches : ArrayList<Launch>){
+        this.objects = launches
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = objects.size
